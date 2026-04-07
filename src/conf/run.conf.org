@@ -1,0 +1,18 @@
+{
+  "exec": "run.sh 20251115.tar.gz",
+  "log": "run.log",
+  "result": "*.mp4 *act.log",
+  "mail": "your-mail@example.com",
+  "sms": "+8190XXXXXXXX",
+  "ec2_role_name": "ts-010-role-ec2-010",
+  "subnet_name": "ts-010-subnet-010",
+  "sg_name": "ts-010-sg-010",
+  "ec2_instance_name_tag": "ts-010-ec2-010",
+  "output_bucket": "${BKT_OUT}",
+  "default_ami_id": "ami-XXXXXXXXXXXXXXXXX",
+  "instance_type": "c6i.2xlarge",
+  "ses_from_email": "your-ses-from@example.com",
+  "key_name": "ts-010-keypair",
+  "prj_prefix": "ts-010",
+  "ebs_size": 50
+}

@@ -1,0 +1,11 @@
+assume-role.sh
+config.sh
+config.sh.org
+mk-role-exec.sh
+mk-role-exec.sh.log
+mk-role-exec.sh.org
+
+mk-role-exec.sh.src:
+exec-policy.json
+policy-check.json
+trust-policy-exec.json

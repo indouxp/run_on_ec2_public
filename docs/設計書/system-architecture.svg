@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+# Last updated: 2025-10-07 00:38:33
+-->
+<svg
+   width="1200"
+   height="850"
+   version="1.1"
+   id="svg161"
+   sodipodi:docname="system-architecture.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview197"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.0422834"
+     inkscape:cx="472.04052"
+     inkscape:cy="372.2596"
+     inkscape:window-width="1860"
+     inkscape:window-height="1131"
+     inkscape:window-x="60"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="data-flow" />
+  <rect
+     width="1200"
+     height="850"
+     fill="#f8f9fa"
+     id="rect2"
+     x="0"
+     y="33.39637" />
+  <g
+     id="s3-input">
+    <rect
+       x="220"
+       y="100"
+       width="140"
+       height="110"
+       rx="10"
+       fill="#e74c3c"
+       stroke="#c0392b"
+       stroke-width="2"
+       id="rect13" />
+    <text
+       x="290"
+       y="125"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text15">S3入力バケット</text>
+    <text
+       x="290"
+       y="143"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text17">${BKT_IN}</text>
+    <text
+       x="290"
+       y="162"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text19">・job.conf (定義)</text>
+    <text
+       x="286.24707"
+       y="176"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text21">・job.sh (実行)</text>
+    <text
+       x="289.9978"
+       y="190"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text23">・input.txt (入力)</text>
+  </g>
+  <!-- 背景 -->
+  <!-- タイトル -->
+  <text
+     x="600"
+     y="40"
+     font-family="Arial, sans-serif"
+     font-size="24px"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text4">S3イベント連携によるEC2自動処理 システム構成図</text>
+  <!-- ユーザー -->
+  <g
+     id="user"
+     transform="translate(3.8783497,121.91843)">
+    <circle
+       cx="100"
+       cy="150"
+       r="30"
+       fill="#3498db"
+       stroke="#2980b9"
+       stroke-width="2"
+       id="circle4" />
+    <text
+       x="100"
+       y="155"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text6">ユーザー</text>
+    <text
+       x="257.29282"
+       y="381.44424"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#34495e"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan2602"
+         x="257.29282"
+         y="381.44424">ダウンロード</tspan></text>
+  </g>
+  <!-- S3入力バケット -->
+  <!-- Lambda起動関数 -->
+  <g
+     id="lambda-starter">
+    <rect
+       x="420"
+       y="100"
+       width="140"
+       height="110"
+       rx="10"
+       fill="#f39c12"
+       stroke="#d68910"
+       stroke-width="2"
+       id="rect26" />
+    <text
+       x="490"
+       y="125"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text28">Lambda</text>
+    <text
+       x="490"
+       y="143"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text30">ts-010-lmd-010</text>
+    <text
+       x="490"
+       y="162"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text32">・設定バリデーション</text>
+    <text
+       x="467.3439"
+       y="176"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text34">・EC2起動</text>
+    <text
+       x="477.59634"
+       y="190"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text36">・UserData注入</text>
+  </g>
+  <!-- EC2インスタンス -->
+  <g
+     id="ec2"
+     transform="translate(4.632598,0.50781229)">
+    <rect
+       x="620"
+       y="100"
+       width="160"
+       height="110"
+       rx="10"
+       fill="#27ae60"
+       stroke="#229954"
+       stroke-width="2"
+       id="rect39" />
+    <text
+       x="700"
+       y="125"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text41">EC2自律実行</text>
+    <text
+       x="700"
+       y="143"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text43">Amazon Linux 2</text>
+    <text
+       x="696.60522"
+       y="162"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text45">・CloudWatch Agent</text>
+    <text
+       x="691"
+       y="176"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text47">・スクリプト実行</text>
+    <text
+       x="700"
+       y="190"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text49">・結果保存・自己停止</text>
+  </g>
+  <!-- S3出力バケット -->
+  <g
+     id="s3-output"
+     transform="translate(-160.1423,337.23124)">
+    <rect
+       x="850"
+       y="100"
+       width="140"
+       height="110"
+       rx="10"
+       fill="#e74c3c"
+       stroke="#c0392b"
+       stroke-width="2"
+       id="rect52" />
+    <text
+       x="920"
+       y="125"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text54">S3出力バケット</text>
+    <text
+       x="920"
+       y="143"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text56">${BKT_OUT}</text>
+    <text
+       x="900.00934"
+       y="163.32384"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text58">・job.log</text>
+    <text
+       x="905.00812"
+       y="177.32384"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text60">・job.result</text>
+  </g>
+  <!-- CloudWatch Logs -->
+  <g
+     id="cloudwatch"
+     transform="translate(-177.04892,121.35026)">
+    <rect
+       x="620"
+       y="300"
+       width="160"
+       height="100"
+       rx="10"
+       fill="#34495e"
+       stroke="#2c3e50"
+       stroke-width="2"
+       id="rect63" />
+    <text
+       x="700"
+       y="325"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text65">CloudWatch Logs</text>
+    <text
+       x="682.13501"
+       y="347"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text67">・ログ監視</text>
+    <text
+       x="698.15088"
+       y="362"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text69">・/var/log/cloud-init</text>
+    <text
+       x="700"
+       y="377"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text71">・リアルタイム送信</text>
+  </g>
+  <!-- SNS/SES通知 -->
+  <g
+     id="notification">
+    <rect
+       x="350"
+       y="300"
+       width="140"
+       height="100"
+       rx="10"
+       fill="#9b59b6"
+       stroke="#8e44ad"
+       stroke-width="2"
+       id="rect74" />
+    <text
+       x="420"
+       y="325"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text76">SNS/SES</text>
+    <text
+       x="418.49927"
+       y="347"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text78">・SMS通知</text>
+    <text
+       x="420"
+       y="362"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text80">・Email通知</text>
+    <text
+       x="418.99805"
+       y="377"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text82">・成功/失敗</text>
+  </g>
+  <!-- EventBridge -->
+  <g
+     id="eventbridge"
+     transform="translate(10.196419,-193.97996)">
+    <rect
+       x="850"
+       y="300"
+       width="140"
+       height="100"
+       rx="10"
+       fill="#ff6b6b"
+       stroke="#c92a2a"
+       stroke-width="2"
+       id="rect85" />
+    <text
+       x="920"
+       y="325"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text87">EventBridge</text>
+    <text
+       x="910.15961"
+       y="347"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text89">・EC2状態監視</text>
+    <text
+       x="920"
+       y="362"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text91">・停止イベント検知</text>
+  </g>
+  <!-- Lambda終了関数 -->
+  <g
+     id="lambda-terminator"
+     transform="translate(12.952535,-171.80992)">
+    <rect
+       x="850"
+       y="480"
+       width="140"
+       height="100"
+       rx="10"
+       fill="#f39c12"
+       stroke="#d68910"
+       stroke-width="2"
+       id="rect94" />
+    <text
+       x="920"
+       y="505"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text96">Lambda</text>
+    <text
+       x="920"
+       y="523"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text98">ts-010-lmd-020</text>
+    <text
+       x="920"
+       y="542"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text100">・EC2インスタンス</text>
+    <text
+       x="893.42609"
+       y="557"
+       font-family="Arial, sans-serif"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text102">・削除</text>
+  </g>
+  <!-- 矢印の定義 -->
+  <defs
+     id="defs108">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect2626"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect1708"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect561"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       id="arrowhead"
+       markerWidth="10"
+       markerHeight="7"
+       refX="9"
+       refY="3.5"
+       orient="auto"
+       viewBox="0 0 10 7"
+       preserveAspectRatio="xMidYMid">
+      <polygon
+         points="0,0 10,3.5 0,7 "
+         fill="#2c3e50"
+         id="polygon105" />
+    </marker>
+    <marker
+       id="arrowhead-6"
+       markerWidth="10"
+       markerHeight="7"
+       refX="9"
+       refY="3.5"
+       orient="auto"
+       viewBox="0 0 10 7"
+       preserveAspectRatio="xMidYMid">
+      <polygon
+         points="10,3.5 0,7 0,0 "
+         fill="#2c3e50"
+         id="polygon105-7" />
+    </marker>
+  </defs>
+  <!-- 矢印フロー -->
+  <!-- 1. ユーザー → S3入力 -->
+  <line
+     x1="137.55972"
+     y1="244.27106"
+     x2="199.08139"
+     y2="181.76134"
+     stroke="#2c3e50"
+     stroke-width="2.03159"
+     marker-end="url(#arrowhead)"
+     id="line110"
+     inkscape:transform-center-x="-0.67150602"
+     inkscape:transform-center-y="-18.816154"
+     style="stroke-width:2;stroke-dasharray:none" />
+  <text
+     x="122.65166"
+     y="215.15843"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text112">1.アップロード</text>
+  <!-- 2. S3入力 → Lambda起動 -->
+  <line
+     x1="366.49609"
+     y1="155"
+     x2="415.22794"
+     y2="155"
+     stroke="#2c3e50"
+     stroke-width="1.88259"
+     marker-end="url(#arrowhead)"
+     id="line114"
+     style="stroke-dasharray:4.99999455,4.99999455;stroke-dashoffset:0;stroke-width:2" />
+  <text
+     x="387"
+     y="145"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text116">2.トリガー</text>
+  <!-- 3. Lambda起動 → EC2 -->
+  <line
+     x1="567.63916"
+     y1="156.05252"
+     x2="613.63434"
+     y2="156.05252"
+     stroke="#2c3e50"
+     stroke-width="1.82896"
+     marker-end="url(#arrowhead)"
+     id="line118"
+     style="stroke-dasharray:5.00000026,5.00000026;stroke-dashoffset:0;stroke-width:2" />
+  <text
+     x="587"
+     y="145"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text120">3.起動</text>
+  <!-- 4. EC2 ← S3入力 (ダウンロード) -->
+  <text
+     x="491.02206"
+     y="247.07408"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text124">4.DL</text>
+  <!-- 5. EC2 → S3出力 -->
+  <line
+     x1="724.62921"
+     y1="217.82217"
+     x2="755.78613"
+     y2="428.19937"
+     stroke="#2c3e50"
+     stroke-width="3.33957"
+     marker-end="url(#arrowhead)"
+     id="line126"
+     style="stroke-width:2;stroke-dasharray:none" />
+  <text
+     x="698.35364"
+     y="390.34726"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text128">5.保存</text>
+  <!-- 6. EC2 → CloudWatch -->
+  <line
+     x1="714.44415"
+     y1="217.45877"
+     x2="593.69885"
+     y2="410.51715"
+     stroke="#2c3e50"
+     stroke-width="5.7976"
+     marker-end="url(#arrowhead)"
+     id="line130"
+     style="stroke-width:2;stroke-dasharray:none" />
+  <text
+     x="608.64886"
+     y="318.00897"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#2c3e50"
+     id="text132">6.ログ</text>
+  <!-- 7. EC2 → SNS/SES -->
+  <line
+     x1="624.72687"
+     y1="214.91992"
+     x2="501.99384"
+     y2="307.72757"
+     stroke="#2c3e50"
+     stroke-width="1.9492"
+     marker-end="url(#arrowhead)"
+     id="line134"
+     style="stroke-width:2;stroke-dasharray:none" />
+  <text
+     x="564.06964"
+     y="287.12454"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#2c3e50"
+     id="text136">7.通知</text>
+  <!-- 8. SNS/SES → ユーザー -->
+  <line
+     x1="342.34964"
+     y1="338.82486"
+     x2="140.77863"
+     y2="284.38049"
+     stroke="#2c3e50"
+     stroke-width="1.12595"
+     marker-end="url(#arrowhead)"
+     id="line138"
+     style="stroke-width:2;stroke-dasharray:none" />
+  <text
+     x="258.59079"
+     y="308.04828"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#2c3e50"
+     id="text140">8.配信</text>
+  <!-- 9. EC2停止 → EventBridge -->
+  <line
+     x1="791.50311"
+     y1="146.81342"
+     x2="851.61908"
+     y2="161.80371"
+     stroke="#2c3e50"
+     stroke-width="1.51045"
+     stroke-dasharray="5, 5"
+     marker-end="url(#arrowhead)"
+     id="line142"
+     style="stroke-width:2;stroke-dasharray:6.62052748,6.62052748;stroke-dashoffset:0" />
+  <text
+     x="815.77649"
+     y="144.11845"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#2c3e50"
+     id="text144">9.停止</text>
+  <!-- 10. EventBridge → Lambda終了 -->
+  <line
+     x1="926.75824"
+     y1="217.40575"
+     x2="926.75824"
+     y2="297.71066"
+     stroke="#2c3e50"
+     stroke-width="2.06952"
+     marker-end="url(#arrowhead)"
+     id="line146"
+     style="stroke-dasharray:5.00000968,5.00000968;stroke-dashoffset:0;stroke-width:2" />
+  <text
+     x="940.96741"
+     y="255.24872"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#2c3e50"
+     id="text148">10.起動</text>
+  <!-- 11. Lambda終了 → EC2削除 -->
+  <line
+     x1="864.60181"
+     y1="300.53162"
+     x2="788.80334"
+     y2="213.53029"
+     stroke="#2c3e50"
+     stroke-width="1.2982"
+     stroke-dasharray="5, 5"
+     marker-end="url(#arrowhead)"
+     id="line150"
+     style="stroke-width:2;stroke-dasharray:5.00000601,5.00000601;stroke-dashoffset:0" />
+  <text
+     x="773.64215"
+     y="262.11972"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#2c3e50"
+     id="text152">11.削除</text>
+  <!-- データフロー説明 -->
+  <g
+     id="data-flow"
+     transform="matrix(0.99992925,0,0,1.1617813,0.04244807,-134.31738)">
+    <rect
+       x="50"
+       y="650"
+       width="1100"
+       height="180"
+       rx="10"
+       fill="#ecf0f1"
+       stroke="#bdc3c7"
+       stroke-width="1"
+       id="rect154" />
+    <text
+       x="60"
+       y="675"
+       font-family="Arial, sans-serif"
+       font-size="16px"
+       font-weight="bold"
+       fill="#2c3e50"
+       id="text156">システム構成詳細</text>
+    <text
+       x="60"
+       y="700"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       fill="#34495e"
+       id="text158">1-2. ユーザーが.confファイルと実行スクリプト、入力ファイルをS3にアップロード → Lambda自動起動</text>
+    <text
+       x="60"
+       y="720"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       fill="#34495e"
+       id="text160">3. Lambdaが設定ファイルをバリデーション → EC2インスタンスを起動（UserDataスクリプト注入）</text>
+    <text
+       x="60"
+       y="740"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       fill="#34495e"
+       id="text162">4-5. EC2がCloudWatch Agent起動 → S3から実行ファイルDL → スクリプト実行 → 結果をS3保存</text>
+    <text
+       x="60"
+       y="760"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       fill="#34495e"
+       id="text164">6-7. EC2が実行ログをCloudWatchに送信 → SNS/SESで成功/失敗通知 → ユーザーに配信</text>
+    <text
+       x="60"
+       y="780"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       fill="#34495e"
+       id="text166">8-9. EC2が自己停止(shutdown) → EventBridgeが停止イベント検知 → Terminator Lambdaがインスタンス削除</text>
+    <text
+       x="60"
+       y="800"
+       font-family="Arial, sans-serif"
+       font-size="12px"
+       fill="#34495e"
+       id="text168">特徴: 処理時間制限なし、長時間バッチ実行対応、完全自律型、課金最適化</text>
+  </g>
+  <!-- 凡例 -->
+  <g
+     id="legend"
+     transform="translate(-64.171631,35.577814)">
+    <rect
+       x="1020"
+       y="650"
+       width="160"
+       height="140"
+       rx="5"
+       fill="#ffffff"
+       stroke="#bdc3c7"
+       stroke-width="1"
+       id="rect171" />
+    <text
+       x="1030"
+       y="670"
+       font-family="Arial, sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       fill="#2c3e50"
+       id="text173">凡例</text>
+    <rect
+       x="1030"
+       y="680"
+       width="15"
+       height="15"
+       fill="#3498db"
+       id="rect175" />
+    <text
+       x="1050"
+       y="692"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       fill="#2c3e50"
+       id="text177">ユーザー</text>
+    <rect
+       x="1030"
+       y="700"
+       width="15"
+       height="15"
+       fill="#e74c3c"
+       id="rect179" />
+    <text
+       x="1050"
+       y="712"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       fill="#2c3e50"
+       id="text181">S3ストレージ</text>
+    <rect
+       x="1030"
+       y="720"
+       width="15"
+       height="15"
+       fill="#f39c12"
+       id="rect183" />
+    <text
+       x="1050"
+       y="732"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       fill="#2c3e50"
+       id="text185">Lambda関数</text>
+    <rect
+       x="1030"
+       y="740"
+       width="15"
+       height="15"
+       fill="#27ae60"
+       id="rect187" />
+    <text
+       x="1050"
+       y="752"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       fill="#2c3e50"
+       id="text189">EC2</text>
+    <rect
+       x="1030"
+       y="760"
+       width="15"
+       height="15"
+       fill="#9b59b6"
+       id="rect191" />
+    <text
+       x="1050"
+       y="772"
+       font-family="Arial, sans-serif"
+       font-size="10px"
+       fill="#2c3e50"
+       id="text193">通知サービス</text>
+  </g>
+  <path
+     style="fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#arrowhead)"
+     d="m 365.58137,183.05081 c 9.87145,8.67316 19.7419,17.34545 34.03032,24.67466 14.28843,7.3292 32.99399,13.31562 52.93571,16.99298 19.94172,3.67736 41.11809,5.04576 60.31461,3.59798 19.19653,-1.44778 36.41101,-5.7113 52.37428,-12.85189 15.96327,-7.1406 30.67435,-17.15772 45.38557,-27.17494"
+     id="path559"
+     inkscape:path-effect="#path-effect561"
+     inkscape:original-d="m 365.58137,183.05081 c 9.87133,8.6733 19.74178,17.34558 29.61135,26.01686 18.70719,5.98766 37.41275,11.97409 56.11782,17.95961 21.17852,1.36947 42.35489,2.73786 63.53165,4.10534 17.21664,-4.2628 34.43112,-8.52631 51.64556,-12.79106 14.71259,-10.01647 29.42367,-20.03359 44.13411,-30.05196"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     style="fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#arrowhead)"
+     d="m 682.27147,510.30568 c -40.95489,16.12019 -81.90951,32.24027 -123.19241,39.67671 -41.28289,7.43644 -82.89522,6.18905 -144.20614,-21.2 C 353.562,501.39335 272.55343,447.86252 221.44361,406.71794 170.33378,365.57336 149.12439,336.81628 127.91394,308.05777"
+     id="path1706"
+     inkscape:path-effect="#path-effect1708"
+     inkscape:original-d="m 682.27147,510.30568 c -40.95442,16.12139 -81.90904,32.24147 -122.8645,48.36049 -41.61083,-1.24637 -83.22316,-2.49376 -124.83664,-3.74215 C 353.56185,501.39359 272.55327,447.86276 191.54339,394.33073 170.33425,365.57302 149.12484,336.81594 127.91394,308.05777"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#ffffff;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#arrowhead)"
+     d="M 429.8537,468.52314 C 391.7543,457.56892 353.6557,446.61493 315.39964,429.29098 277.14358,411.96704 238.73672,388.27592 208.92969,365.07055 179.12267,341.86518 157.92097,319.14906 136.71824,296.43183"
+     id="path2622"
+     inkscape:path-effect="#path-effect2626"
+     inkscape:original-d="M 429.8537,468.52314 C 391.75411,457.56958 353.65551,446.61559 315.55311,435.6598 277.14341,411.96731 238.73654,388.2762 200.32462,364.58157 179.12271,341.86515 157.92101,319.14902 136.71824,296.43183"
+     sodipodi:nodetypes="cccc" />
+</svg>

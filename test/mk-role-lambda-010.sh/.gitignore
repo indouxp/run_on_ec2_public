@@ -1,0 +1,11 @@
+config.sh
+config.sh.org
+mk-role-lambda-010.sh
+mk-role-lambda-010.sh.log
+mk-role-lambda-010.sh.org
+
+mk-role-lambda-010.sh.src:
+lambda-custom-policy.json
+policy-check.json
+trust-policy-lambda.json
+assume-role.sh

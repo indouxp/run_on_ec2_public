@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  S3イベント連携によるEC2自動処理 処理フロー (v3)
+  修正点:
+    - filter="url(#sh)" を全廃（Inkscapeでの描画順狂い対策）
+    - SVG要素の描画順を厳密に管理（背景→ゾーン→ボックス→矢印→ラベル）
+    - 全ボックスが正しく前面に表示されるよう再設計
+-->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',Arial,sans-serif"
+   version="1.1"
+   id="svg247"
+   sodipodi:docname="system-flow.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview249"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.1333553"
+     inkscape:cx="589.40034"
+     inkscape:cy="261.61258"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg247" />
+  <defs
+     id="defs11">
+    <!-- 通常フロー矢印 -->
+    <marker
+       id="arr"
+       markerWidth="7"
+       markerHeight="6"
+       refX="6.5"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0,6 0,0 7,3 "
+         fill="#4a5568"
+         id="polygon2" />
+    </marker>
+    <!-- エラーフロー矢印 -->
+    <marker
+       id="arr-red"
+       markerWidth="7"
+       markerHeight="6"
+       refX="6.5"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0,7 3,0 6"
+         fill="#E53E3E"
+         id="polygon5" />
+    </marker>
+    <!-- 通知フロー矢印 -->
+    <marker
+       id="arr-purple"
+       markerWidth="7"
+       markerHeight="6"
+       refX="6.5"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0,7 3,0 6"
+         fill="#805AD5"
+         id="polygon8" />
+    </marker>
+  </defs>
+  <!-- ============================================================
+       LAYER 0: 背景（最背面）
+       ============================================================ -->
+  <rect
+     width="292.07172"
+     height="210"
+     fill="#edf2f7"
+     id="rect13"
+     x="2.5370476"
+     y="-4.2726803"
+     style="stroke-width:0.991668" />
+  <!-- タイトルバー -->
+  <rect
+     x="0"
+     y="0"
+     width="297"
+     height="8"
+     fill="#2D3748"
+     id="rect15" />
+  <text
+     x="148.5"
+     y="5.8"
+     font-size="4.5"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     letter-spacing="0.3"
+     id="text17">
+    S3イベント連携によるEC2自動処理 処理フロー
+  </text>
+  <!-- ダイアグラム背景 -->
+  <rect
+     x="0"
+     y="8"
+     width="197.08887"
+     height="202"
+     fill="#f7fafc"
+     id="rect19"
+     style="stroke-width:1.01848" />
+  <!-- ============================================================
+       LAYER 1: ゾーン背景（ボックスより必ず前に描画）
+       EC2ゾーン: x=103〜148, y=22〜162
+       ============================================================ -->
+  <rect
+     x="102.98405"
+     y="21.98406"
+     width="46.031872"
+     height="129.03914"
+     rx="3.0020785"
+     fill="#f0fff4"
+     stroke="#68d391"
+     stroke-width="0.794477"
+     stroke-dasharray="3, 2"
+     id="rect21" />
+  <!-- ============================================================
+       LAYER 2: 右パネル背景（ボックスより前に描画）
+       ============================================================ -->
+  <!-- システム特徴パネル -->
+  <!-- 凡例パネル -->
+  <g
+     id="g1425" />
+  <!-- ============================================================
+       LAYER 3: 通知パス（ユーザーへの紫L字ライン、ボックスの下に）
+       ⑩左端(107, 121.5) → 左マージン(4, 121.5) → (4, 47) → ①(17, 47)
+       ============================================================ -->
+  <path
+     d="m 107,121.5 -90.304035,-0.085 -0.287312,-67.484922 -0.154628,-7.12719"
+     stroke="#805ad5"
+     stroke-width="0.6"
+     fill="none"
+     marker-end="url(#arr-purple)"
+     id="path35"
+     sodipodi:nodetypes="cccc" />
+  <!-- ============================================================
+       LAYER 4: フローボックス（最前面グループ）
+       描画順: 背景→ゾーン→パス→ [ここからボックス]
+       ============================================================ -->
+  <!-- ① ユーザー (楕円) cx=17 cy=38 -->
+  <ellipse
+     cx="17"
+     cy="38"
+     rx="14"
+     ry="9"
+     fill="#4299E1"
+     stroke="#2B6CB0"
+     stroke-width="0.6"
+     id="ellipse37" />
+  <text
+     x="17"
+     y="36"
+     font-size="3.2"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text39">① ユーザー</text>
+  <text
+     x="17"
+     y="40.5"
+     font-size="2.1"
+     text-anchor="middle"
+     fill="#BEE3F8"
+     id="text41">.conf アップロード</text>
+  <!-- ② S3入力バケット x=38 y=30 w=26 h=16 -->
+  <rect
+     x="38"
+     y="30"
+     width="26"
+     height="16"
+     rx="2"
+     fill="#FC8181"
+     stroke="#E53E3E"
+     stroke-width="0.6"
+     id="rect43" />
+  <text
+     x="51"
+     y="36.2"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text45">② S3入力</text>
+  <text
+     x="51"
+     y="40"
+     font-size="2"
+     text-anchor="middle"
+     fill="white"
+     id="text47">${BKT_IN}</text>
+  <text
+     x="51"
+     y="43.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="#FED7D7"
+     id="text49">.conf/.sh/input</text>
+  <!-- ③ Lambda起動 x=71 y=24 w=29 h=28 -->
+  <rect
+     x="71"
+     y="24"
+     width="29"
+     height="28"
+     rx="2"
+     fill="#ED8936"
+     stroke="#C05621"
+     stroke-width="0.6"
+     id="rect51" />
+  <text
+     x="85.5"
+     y="31"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text53">③ Lambda起動</text>
+  <text
+     x="85.5"
+     y="35.5"
+     font-size="2"
+     text-anchor="middle"
+     fill="white"
+     id="text55">ts-010-lmd-010</text>
+  <text
+     x="85.5"
+     y="39.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="#FEEBCB"
+     id="text57">・設定バリデーション</text>
+  <text
+     x="85.5"
+     y="43"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="#FEEBCB"
+     id="text59">・リソースID取得</text>
+  <text
+     x="85.5"
+     y="46.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="#FEEBCB"
+     id="text61">・EC2起動→切り離し</text>
+  <!-- ④ EC2起動 (EC2ゾーン内) x=107 y=25 w=37 h=27 -->
+  <g
+     id="g810">
+    <rect
+       x="107"
+       y="25"
+       width="37"
+       height="27"
+       rx="2"
+       fill="#48BB78"
+       stroke="#276749"
+       stroke-width="0.6"
+       id="rect63" />
+    <text
+       x="125.5"
+       y="32"
+       font-size="3"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="white"
+       id="text65">④ EC2起動</text>
+    <text
+       x="125.5"
+       y="36.5"
+       font-size="2"
+       text-anchor="middle"
+       fill="white"
+       id="text67">Amazon Linux 2</text>
+    <text
+       x="125.5"
+       y="40.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="#C6F6D5"
+       id="text69">UserData スクリプト起動</text>
+    <text
+       x="125.5"
+       y="44"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="#C6F6D5"
+       id="text71">Lambda から切り離し</text>
+    <text
+       x="125.5"
+       y="47.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="#C6F6D5"
+       id="text73">⑤ CloudWatch Agent 起動</text>
+  </g>
+  <!-- ⑥ S3からDL x=107 y=58 w=37 h=13 -->
+  <g
+     id="g784">
+    <rect
+       x="107"
+       y="58"
+       width="37"
+       height="13"
+       rx="2"
+       fill="#63B3ED"
+       stroke="#2C5282"
+       stroke-width="0.6"
+       id="rect75" />
+    <text
+       x="125.5"
+       y="64"
+       font-size="3"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="white"
+       id="text77">⑥ S3からDL</text>
+    <text
+       x="125.5"
+       y="68.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="white"
+       id="text79">スクリプト・入力ファイル取得</text>
+  </g>
+  <!-- ⑦ スクリプト実行 x=107 y=77 w=37 h=13 -->
+  <g
+     id="g761">
+    <rect
+       x="107"
+       y="77"
+       width="37"
+       height="13"
+       rx="2"
+       fill="#38B2AC"
+       stroke="#234E52"
+       stroke-width="0.6"
+       id="rect81" />
+    <text
+       x="125.5"
+       y="83"
+       font-size="3"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="white"
+       id="text83">⑦ スクリプト実行</text>
+    <text
+       x="125.5"
+       y="87.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="white"
+       id="text85">UserData 内でシェル実行</text>
+  </g>
+  <!-- ⑨ S3出力へ保存 x=107 y=96 w=37 h=13 -->
+  <a
+     id="a738">
+    <rect
+       x="107"
+       y="96"
+       width="37"
+       height="13"
+       rx="2"
+       fill="#63B3ED"
+       stroke="#2C5282"
+       stroke-width="0.6"
+       id="rect87" />
+    <text
+       x="125.5"
+       y="102"
+       font-size="3"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="white"
+       id="text89">⑨ S3出力へ保存</text>
+    <text
+       x="125.5"
+       y="106.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="white"
+       id="text91">ログ・結果ファイル保存</text>
+  </a>
+  <!-- ⑩ SNS/SES通知 x=107 y=115 w=37 h=13 -->
+  <a
+     id="a715">
+    <rect
+       x="107"
+       y="115"
+       width="37"
+       height="13"
+       rx="2"
+       fill="#9F7AEA"
+       stroke="#553C9A"
+       stroke-width="0.6"
+       id="rect93" />
+    <text
+       x="125.5"
+       y="121"
+       font-size="3"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="white"
+       id="text95">⑩ SNS/SES通知</text>
+    <text
+       x="125.5"
+       y="125.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="white"
+       id="text97">成功/失敗を SMS・Email 送信</text>
+  </a>
+  <!-- ⑪ EC2自己停止 x=107 y=134 w=37 h=13 -->
+  <g
+     id="g692">
+    <rect
+       x="107"
+       y="134"
+       width="37"
+       height="13"
+       rx="2"
+       fill="#ED8936"
+       stroke="#C05621"
+       stroke-width="0.6"
+       id="rect99" />
+    <text
+       x="125.5"
+       y="140"
+       font-size="3"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="white"
+       id="text101">⑪ EC2自己停止</text>
+    <text
+       x="125.5"
+       y="144.5"
+       font-size="1.9"
+       text-anchor="middle"
+       fill="white"
+       id="text103">shutdown -h now</text>
+  </g>
+  <!-- ⑭ EC2削除 (ゾーン外) x=107 y=177 w=37 h=13 -->
+  <g
+     id="g483">
+    <rect
+       x="108.04559"
+       y="172.5275"
+       width="37"
+       height="13"
+       rx="2"
+       fill="#a0aec0"
+       stroke="#718096"
+       stroke-width="0.6"
+       id="rect105" />
+    <text
+       x="126.5276"
+       y="179.97163"
+       font-size="3px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text107">⑭ EC2削除</text>
+  </g>
+  <text
+     x="125.5"
+     y="187.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="white"
+     id="text109">インスタンス完全削除</text>
+  <!-- ⑧ CloudWatch Logs x=155 y=75 w=36 h=17 -->
+  <rect
+     x="155"
+     y="75"
+     width="36"
+     height="17"
+     rx="2"
+     fill="#2D3748"
+     stroke="#1A202C"
+     stroke-width="0.6"
+     id="rect111" />
+  <text
+     x="173"
+     y="82"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text113">⑧ CloudWatch</text>
+  <text
+     x="173"
+     y="86"
+     font-size="2"
+     text-anchor="middle"
+     fill="#CBD5E0"
+     id="text115">Logs</text>
+  <text
+     x="173"
+     y="90"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="#CBD5E0"
+     id="text117">リアルタイムログ</text>
+  <!-- S3出力バケット x=155 y=95 w=36 h=15 -->
+  <rect
+     x="155"
+     y="95"
+     width="36"
+     height="15"
+     rx="2"
+     fill="#FC8181"
+     stroke="#E53E3E"
+     stroke-width="0.6"
+     id="rect119" />
+  <text
+     x="173"
+     y="101.5"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text121">S3出力バケット</text>
+  <text
+     x="173"
+     y="106.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="white"
+     id="text123">bkt-out / job.log / result</text>
+  <!-- ⑫ EventBridge x=155 y=133 w=36 h=15 -->
+  <rect
+     x="155"
+     y="133"
+     width="36"
+     height="15"
+     rx="2"
+     fill="#F56565"
+     stroke="#C53030"
+     stroke-width="0.6"
+     id="rect125" />
+  <text
+     x="173"
+     y="140"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text127">⑫ EventBridge</text>
+  <text
+     x="173"
+     y="144.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="white"
+     id="text129">EC2停止イベント検知</text>
+  <!-- ⑬ Lambda終了 x=155 y=154 w=36 h=15 -->
+  <rect
+     x="155"
+     y="154"
+     width="36"
+     height="15"
+     rx="2"
+     fill="#ED8936"
+     stroke="#C05621"
+     stroke-width="0.6"
+     id="rect131" />
+  <text
+     x="173"
+     y="161"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text133">⑬ Lambda終了</text>
+  <text
+     x="173"
+     y="166.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="white"
+     id="text135">ts-010-lmd-020 / EC2削除</text>
+  <!-- エラー通知ボックス x=71 y=58 w=29 h=13 -->
+  <rect
+     x="71"
+     y="58"
+     width="29"
+     height="13"
+     rx="2"
+     fill="#9F7AEA"
+     stroke="#553C9A"
+     stroke-width="0.6"
+     id="rect137" />
+  <text
+     x="85.5"
+     y="64.5"
+     font-size="3"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="white"
+     id="text139">SNS/SES</text>
+  <text
+     x="85.5"
+     y="68.5"
+     font-size="1.9"
+     text-anchor="middle"
+     fill="white"
+     id="text141">エラー通知</text>
+  <!-- ============================================================
+       LAYER 5: 矢印・接続線（ボックスの上に描画）
+       ============================================================ -->
+  <!-- ① → ② -->
+  <line
+     x1="31"
+     y1="38"
+     x2="37"
+     y2="38"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line143" />
+  <!-- ② → ③ -->
+  <line
+     x1="64"
+     y1="38"
+     x2="70"
+     y2="38"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line145" />
+  <!-- ③ → ④ -->
+  <line
+     x1="100"
+     y1="38"
+     x2="105"
+     y2="38"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line147" />
+  <!-- ④ → ⑥ -->
+  <line
+     x1="125.5"
+     y1="52"
+     x2="125.5"
+     y2="57"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line149" />
+  <!-- ⑥ → ⑦ -->
+  <line
+     x1="125.5"
+     y1="71"
+     x2="125.5"
+     y2="76"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line151" />
+  <!-- ⑦ → ⑨ -->
+  <line
+     x1="125.5"
+     y1="90"
+     x2="125.5"
+     y2="95"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line153" />
+  <!-- ⑨ → ⑩ -->
+  <line
+     x1="125.5"
+     y1="109"
+     x2="125.5"
+     y2="114"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line155" />
+  <!-- ⑩ → ⑪ -->
+  <line
+     x1="125.5"
+     y1="128"
+     x2="125.5"
+     y2="133"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line157" />
+  <!-- ⑦ → ⑧ CloudWatch (破線) -->
+  <line
+     x1="144"
+     y1="83.5"
+     x2="154"
+     y2="83.5"
+     stroke="#4A5568"
+     stroke-width="0.4"
+     stroke-dasharray="2,1"
+     marker-end="url(#arr)"
+     id="line159" />
+  <!-- ⑨ → S3出力 -->
+  <line
+     x1="144"
+     y1="102.5"
+     x2="154"
+     y2="102.5"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line161" />
+  <!-- ⑪ → ⑫ (破線) -->
+  <line
+     x1="144"
+     y1="140.5"
+     x2="154"
+     y2="140.5"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     stroke-dasharray="2,1"
+     marker-end="url(#arr)"
+     id="line163" />
+  <!-- ⑫ → ⑬ -->
+  <line
+     x1="173"
+     y1="148"
+     x2="173"
+     y2="153"
+     stroke="#4A5568"
+     stroke-width="0.5"
+     marker-end="url(#arr)"
+     id="line165" />
+  <!-- ⑬ → ⑭ (左折→下折) -->
+  <path
+     d="m 154.9845,161.69111 -27.8827,-0.0198 -0.0561,10.17772"
+     stroke="#4a5568"
+     stroke-width="0.41254"
+     fill="none"
+     marker-end="url(#arr)"
+     id="path167"
+     sodipodi:nodetypes="ccc" />
+  <!-- ③ → エラー通知 (赤破線) -->
+  <line
+     x1="85.5"
+     y1="52"
+     x2="85.5"
+     y2="57"
+     stroke="#E53E3E"
+     stroke-width="0.5"
+     stroke-dasharray="2,1"
+     marker-end="url(#arr-red)"
+     id="line169" />
+  <!-- ============================================================
+       LAYER 6: 矢印ラベル（最前面）
+       ============================================================ -->
+  <text
+     x="67"
+     y="36.5"
+     font-size="2"
+     text-anchor="middle"
+     fill="#718096"
+     id="text171">S3通知</text>
+  <text
+     x="89"
+     y="56.5"
+     font-size="2.2"
+     fill="#E53E3E"
+     id="text173">エラー時</text>
+  <text
+     x="55"
+     y="119.5"
+     font-size="2.5"
+     text-anchor="middle"
+     fill="#805AD5"
+     id="text175">通知配信</text>
+  <!-- EC2ゾーンラベル -->
+  <text
+     x="127.44084"
+     y="156.0771"
+     font-size="2.5px"
+     text-anchor="middle"
+     fill="#38a169"
+     font-style="italic"
+     id="text177">EC2 自律実行ゾーン</text>
+  <rect
+     x="210.24503"
+     y="11.363158"
+     width="77.422775"
+     height="61.12265"
+     rx="3.0410299"
+     fill="#ffffff"
+     stroke="#cbd5e0"
+     stroke-width="0.577227"
+     id="rect23" />
+  <rect
+     x="209.95641"
+     y="11.374544"
+     width="78"
+     height="11.877354"
+     rx="3.0288446"
+     fill="#2d3748"
+     id="rect25"
+     style="stroke-width:1.0048" />
+  <rect
+     x="209.95641"
+     y="17.374544"
+     width="77.971535"
+     height="5.9001579"
+     fill="#2d3748"
+     id="rect27"
+     ry="0"
+     style="stroke-width:1.0048" />
+  <text
+     x="221.67526"
+     y="29.374544"
+     font-size="2.5px"
+     fill="#276749"
+     id="text181">✓ Lambda処理時間制限なし（EC2が主処理担当）</text>
+  <text
+     x="221.67526"
+     y="34.497219"
+     font-size="2.5px"
+     fill="#276749"
+     id="text183">✓ 完全自律型実行（EC2が自己完結）</text>
+  <text
+     x="221.67526"
+     y="39.619888"
+     font-size="2.5px"
+     fill="#276749"
+     id="text185">✓ エラー自動通知（SNS/SES）</text>
+  <text
+     x="221.67526"
+     y="44.742561"
+     font-size="2.5px"
+     fill="#276749"
+     id="text187">✓ リアルタイムログ（CloudWatch Logs）</text>
+  <text
+     x="221.67526"
+     y="50.144032"
+     font-size="2.5px"
+     fill="#276749"
+     id="text189">✓ 自動リソース削除（課金最適化）</text>
+  <text
+     x="221.67526"
+     y="55.229202"
+     font-size="2.5px"
+     fill="#276749"
+     id="text191">✓ 長時間バッチ処理対応</text>
+  <text
+     x="221.67526"
+     y="60.264374"
+     font-size="2.5px"
+     fill="#276749"
+     id="text193">✓ S3イベント駆動型アーキテクチャ</text>
+  <text
+     x="221.67526"
+     y="65.374542"
+     font-size="2.5px"
+     fill="#276749"
+     id="text195">✓ .conf 設定ファイルによるジョブ定義</text>
+  <!-- ============================================================
+       LAYER 7: 右パネル テキスト（最前面）
+       ============================================================ -->
+  <!-- システム特徴 ヘッダー -->
+  <text
+     x="248.84091"
+     y="18.639721"
+     font-size="3.5px"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="#ffffff"
+     id="text179">システム特徴</text>
+  <!-- 凡例 ヘッダー -->
+  <!-- 色凡例 -->
+  <!-- 矢印凡例 -->
+  <g
+     id="g2072"
+     transform="translate(16.262091,-3.6996706)">
+    <g
+       id="g2007">
+      <g
+         id="g1899">
+        <g
+           id="g1784">
+          <rect
+             x="193.99644"
+             y="79.996445"
+             width="77.395752"
+             height="125.97328"
+             rx="3.0430617"
+             fill="#ffffff"
+             stroke="#cbd5e0"
+             stroke-width="0.604247"
+             id="rect29" />
+        </g>
+        <g
+           id="g1448"
+           transform="matrix(1.0180309,0,0,1,-3.8036734,0)">
+          <rect
+             x="194"
+             y="86"
+             width="76.6185"
+             height="4.5958853"
+             fill="#2d3748"
+             id="rect33" />
+          <rect
+             x="194"
+             y="80"
+             width="76.613091"
+             height="10.480257"
+             rx="3"
+             fill="#2d3748"
+             id="rect31" />
+        </g>
+      </g>
+      <text
+         x="232.37575"
+         y="86.61219"
+         font-size="3.5px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#ffffff"
+         id="text197">凡例</text>
+    </g>
+    <g
+       id="g1840"
+       transform="translate(8.568858)">
+      <g
+         id="g1521">
+        <rect
+           x="196.85001"
+           y="93"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#4299e1"
+           id="rect199" />
+        <text
+           x="208.8671"
+           y="96.947701"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text201">ユーザー</text>
+      </g>
+      <g
+         id="g1543">
+        <rect
+           x="196.85001"
+           y="102.72727"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#fc8181"
+           id="rect203" />
+        <text
+           x="208.95442"
+           y="106.71397"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text205">S3ストレージ</text>
+      </g>
+      <g
+         id="g1565">
+        <rect
+           x="196.85001"
+           y="112.45454"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#ed8936"
+           id="rect207" />
+        <text
+           x="208.85921"
+           y="116.43993"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text209">Lambda関数</text>
+      </g>
+      <g
+         id="g1587">
+        <rect
+           x="196.85001"
+           y="122.18182"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#48bb78"
+           id="rect211" />
+        <text
+           x="208.85921"
+           y="126.18282"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text213">EC2インスタンス</text>
+      </g>
+      <g
+         id="g1609">
+        <rect
+           x="196.85001"
+           y="131.90909"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#9f7aea"
+           id="rect215" />
+        <text
+           x="208.9971"
+           y="135.89709"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text217">通知サービス（SNS/SES）</text>
+      </g>
+      <g
+         id="g1631">
+        <rect
+           x="197"
+           y="141.74683"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#2d3748"
+           stroke="#cbd5e0"
+           stroke-width="0.3"
+           id="rect219" />
+        <text
+           x="208.94046"
+           y="145.41905"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text221">CloudWatch Logs</text>
+      </g>
+      <g
+         id="g1653">
+        <rect
+           x="196.85001"
+           y="151.23495"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#f56565"
+           id="rect223" />
+        <text
+           x="208.85921"
+           y="154.90717"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text225">EventBridge</text>
+      </g>
+      <g
+         id="g1675">
+        <rect
+           x="196.85001"
+           y="160.72307"
+           width="9"
+           height="6"
+           rx="1"
+           fill="#a0aec0"
+           id="rect227" />
+        <text
+           x="208.9191"
+           y="164.69937"
+           font-size="2.6px"
+           fill="#2d3748"
+           id="text229">削除済みリソース</text>
+      </g>
+      <g
+         id="g1697">
+        <line
+           x1="196.85001"
+           y1="172.30971"
+           x2="205.85001"
+           y2="172.30971"
+           stroke="#4a5568"
+           stroke-width="0.7"
+           marker-end="url(#arr)"
+           id="line231" />
+        <text
+           x="208.94249"
+           y="173.26096"
+           font-size="2.5px"
+           fill="#2d3748"
+           id="text233">正常フロー</text>
+      </g>
+      <g
+         id="g1719">
+        <line
+           x1="196.85001"
+           y1="180.83731"
+           x2="205.85001"
+           y2="180.83731"
+           stroke="#4a5568"
+           stroke-width="0.7"
+           stroke-dasharray="2, 1"
+           marker-end="url(#arr)"
+           id="line235" />
+        <text
+           x="208.97249"
+           y="181.76732"
+           font-size="2.5px"
+           fill="#2d3748"
+           id="text237">非同期 / イベント駆動</text>
+      </g>
+      <g
+         id="g1741">
+        <line
+           x1="196.85001"
+           y1="189.07272"
+           x2="205.85001"
+           y2="189.07272"
+           stroke="#e53e3e"
+           stroke-width="0.7"
+           stroke-dasharray="2, 1"
+           marker-end="url(#arr-red)"
+           id="line239" />
+        <text
+           x="208.8625"
+           y="189.95273"
+           font-size="2.5px"
+           fill="#2d3748"
+           id="text241">エラーフロー</text>
+      </g>
+      <g
+         id="g1763">
+        <line
+           x1="196.85001"
+           y1="197"
+           x2="205.85001"
+           y2="197"
+           stroke="#805ad5"
+           stroke-width="0.7"
+           marker-end="url(#arr-purple)"
+           id="line243" />
+        <text
+           x="209"
+           y="197.95"
+           font-size="2.5px"
+           fill="#2d3748"
+           id="text245">通知フロー（ユーザーへ）</text>
+      </g>
+    </g>
+  </g>
+</svg>

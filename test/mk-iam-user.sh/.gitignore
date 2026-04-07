@@ -1,0 +1,10 @@
+assume-role.sh
+config.sh
+config.sh.org
+mk-iam-user.sh
+mk-iam-user.sh.log
+mk-iam-user.sh.org
+
+mk-iam-user.sh.src:
+policy-check.json
+user-assume-policy.json

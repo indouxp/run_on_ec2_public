@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+# Last updated: 2025-10-07 00:37:54
+-->
+<svg
+   width="700"
+   height="900"
+   version="1.1"
+   id="svg-dataflow"
+   sodipodi:docname="data-flow.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview124"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.733281"
+     inkscape:cx="333.4716"
+     inkscape:cy="278.66226"
+     inkscape:window-width="1860"
+     inkscape:window-height="1131"
+     inkscape:window-x="60"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg-dataflow" />
+  <rect
+     width="700"
+     height="900"
+     fill="#f8f9fa"
+     id="rect2"
+     x="-0.13742088"
+     y="1.9519997" />
+  <rect
+     x="52.339668"
+     y="311.56696"
+     width="599.91034"
+     height="425.79889"
+     rx="4.9992528"
+     fill="#eafaf1"
+     stroke="#27ae60"
+     stroke-width="2.08962"
+     id="rect49"
+     style="stroke-width:2;stroke-dasharray:none" />
+  <!-- 背景 -->
+  <!-- タイトル -->
+  <text
+     x="356.85477"
+     y="33.519485"
+     font-family="Arial, sans-serif"
+     font-size="18px"
+     font-weight="bold"
+     text-anchor="middle"
+     fill="#2c3e50"
+     id="text4">データフロー図</text>
+  <!-- 矢印マーカー定義 -->
+  <defs
+     id="defs9">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect754"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       id="arrow-flow"
+       markerWidth="10"
+       markerHeight="10"
+       refX="9"
+       refY="3"
+       orient="auto"
+       markerUnits="strokeWidth">
+      <path
+         d="M 0,0 V 6 L 9,3 Z"
+         fill="#2c3e50"
+         id="path6" />
+    </marker>
+    <marker
+       id="arrow-flow-5"
+       markerWidth="10"
+       markerHeight="10"
+       refX="9"
+       refY="3"
+       orient="auto"
+       markerUnits="strokeWidth">
+      <path
+         d="M 0,0 V 6 L 9,3 Z"
+         fill="#2c3e50"
+         id="path6-6" />
+    </marker>
+  </defs>
+  <!-- ステップ1 -->
+  <g
+     id="flow-step1"
+     transform="translate(6.863761)">
+    <rect
+       x="250"
+       y="50"
+       width="200"
+       height="50"
+       rx="25"
+       fill="#3498db"
+       stroke="#2980b9"
+       stroke-width="2"
+       id="rect11" />
+    <text
+       x="350"
+       y="73"
+       font-size="13px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text13">① ユーザー</text>
+    <text
+       x="350"
+       y="88"
+       font-size="11px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text15">ファイルアップロード</text>
+  </g>
+  <!-- ステップ2 -->
+  <g
+     id="flow-step2"
+     transform="translate(6.863761,-10.784143)">
+    <rect
+       x="250"
+       y="125"
+       width="200"
+       height="50"
+       rx="5"
+       fill="#e74c3c"
+       stroke="#c0392b"
+       stroke-width="2"
+       id="rect20" />
+    <text
+       x="350"
+       y="145"
+       font-size="13px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text22">② S3イベントトリガー</text>
+    <text
+       x="350"
+       y="160"
+       font-size="10px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text24">${BKT_IN} (.conf検知)</text>
+  </g>
+  <!-- ステップ3-5: Lambda起動処理 -->
+  <g
+     id="g1805"
+     transform="matrix(1.0002631,0,-0.00360864,0.84813804,2.6953123,11.273912)">
+    <rect
+       x="50"
+       y="200"
+       width="600"
+       height="130"
+       rx="5"
+       fill="#fef5e7"
+       stroke="#f39c12"
+       stroke-width="2"
+       id="rect29" />
+    <text
+       x="60"
+       y="218"
+       font-size="12px"
+       font-weight="bold"
+       fill="#f39c12"
+       id="text31">Lambda起動処理（5分以内）</text>
+  </g>
+  <g
+     id="g1785"
+     transform="translate(4.2002631,-19.579929)">
+    <rect
+       x="252.6635"
+       y="203.01164"
+       width="200"
+       height="40"
+       rx="3"
+       fill="#f39c12"
+       stroke="#d68910"
+       stroke-width="1"
+       id="rect33" />
+    <text
+       x="352.97699"
+       y="226.58664"
+       font-size="11px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text35">③ Lambda起動 (ts-010-lmd-010)</text>
+  </g>
+  <g
+     id="g1775"
+     transform="translate(4.2002631,-21.119916)">
+    <rect
+       x="252.6635"
+       y="268.76749"
+       width="200"
+       height="40"
+       rx="3"
+       fill="#f39c12"
+       stroke="#d68910"
+       stroke-width="1"
+       id="rect41" />
+    <g
+       id="g1763"
+       transform="translate(3.0570336,-3.3241411)">
+      <text
+         x="349.73846"
+         y="289.89963"
+         font-size="11px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#ffffff"
+         id="text43">④ EC2インスタンス起動</text>
+      <text
+         x="349.66046"
+         y="302.89963"
+         font-size="9px"
+         text-anchor="middle"
+         fill="#ffffff"
+         id="text45">UserData注入・切り離し</text>
+    </g>
+  </g>
+  <!-- ステップ6-12: EC2自律処理 -->
+  <text
+     x="70.048241"
+     y="305.91223"
+     font-size="13.2234px"
+     font-weight="bold"
+     fill="#27ae60"
+     id="text51"
+     transform="scale(0.90718864,1.1023066)"
+     style="stroke-width:1.10195">EC2自律処理（時間制限なし）</text>
+  <g
+     id="g1753"
+     transform="translate(4.2002631,-20.159858)">
+    <rect
+       x="252.6635"
+       y="334.52328"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#27ae60"
+       stroke="#229954"
+       stroke-width="1"
+       id="rect53" />
+    <text
+       x="352.78351"
+       y="355.08328"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text55">⑤ CloudWatch Agent起動</text>
+  </g>
+  <line
+     x1="349.76947"
+     y1="419.3078"
+     x2="349.76947"
+     y2="434.3078"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line57" />
+  <g
+     id="g1743"
+     transform="translate(4.2002631,-16.69983)">
+    <rect
+       x="252.6635"
+       y="395.27911"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#5499c7"
+       stroke="#2e86c1"
+       stroke-width="1"
+       id="rect59" />
+    <text
+       x="352.72351"
+       y="416.24911"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text61">⑥ S3からDL (bkt-in)</text>
+  </g>
+  <g
+     id="g1733"
+     transform="translate(4.2002631,-13.239802)">
+    <rect
+       x="252.6635"
+       y="456.03494"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#16a085"
+       stroke="#138d75"
+       stroke-width="1"
+       id="rect65" />
+    <text
+       x="352.71851"
+       y="477.33994"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text67">⑦ シェルスクリプト実行</text>
+  </g>
+  <!-- CloudWatch並列 -->
+  <g
+     id="g2138"
+     transform="translate(-4.0175781e-5,5.3631948)">
+    <rect
+       x="530.14343"
+       y="437.43195"
+       width="110"
+       height="35"
+       rx="2"
+       fill="#34495e"
+       stroke="#2c3e50"
+       stroke-width="1"
+       id="rect71" />
+    <text
+       x="584.87341"
+       y="452.11496"
+       font-size="9px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text73"><tspan
+         sodipodi:role="line"
+         id="tspan2078"
+         x="584.87341"
+         y="452.11496">シェルログ</tspan><tspan
+         sodipodi:role="line"
+         id="tspan2080"
+         x="584.87341"
+         y="463.36496">run.log</tspan></text>
+  </g>
+  <text
+     x="588.39746"
+     y="346.34979"
+     font-size="8px"
+     text-anchor="middle"
+     fill="#ffffff"
+     id="text75">ログ送信</text>
+  <line
+     x1="350"
+     y1="520"
+     x2="350"
+     y2="535"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line77" />
+  <g
+     id="g1723"
+     transform="translate(4.2002631,-12.144398)">
+    <rect
+       x="252.6635"
+       y="519.1554"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#5499c7"
+       stroke="#2e86c1"
+       stroke-width="1"
+       id="rect79" />
+    <text
+       x="352.94849"
+       y="539.9054"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text81">⑧結果保存 (bkt-out)</text>
+  </g>
+  <g
+     id="g1713"
+     transform="translate(4.2002631,-6.3197158)">
+    <rect
+       x="252.6635"
+       y="577.54657"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#9b59b6"
+       stroke="#8e44ad"
+       stroke-width="1"
+       id="rect85" />
+    <text
+       x="352.9285"
+       y="598.84656"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text87">⑨SNS/SES通知</text>
+  </g>
+  <g
+     id="g1703"
+     transform="translate(4.2002631,-2.8597185)">
+    <rect
+       x="252.6635"
+       y="638.30243"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#e67e22"
+       stroke="#d35400"
+       stroke-width="1"
+       id="rect91" />
+    <text
+       x="352.72849"
+       y="659.60242"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text93">⑩EC2自己停止</text>
+  </g>
+  <!-- 通知矢印（ユーザーへ） -->
+  <g
+     id="g1693"
+     transform="matrix(1.0394884,0,0,0.98028168,-7.8816517,1.5862094)">
+    <path
+       d="M 250,602 Q 150,400 250,80"
+       stroke="#9b59b6"
+       stroke-width="1.5"
+       stroke-dasharray="3, 3"
+       fill="none"
+       marker-end="url(#arrow-flow)"
+       id="path95" />
+    <text
+       x="-91.54406"
+       y="245.99361"
+       font-size="9px"
+       fill="#9b59b6"
+       transform="rotate(-75.538843)"
+       id="text97">通知配信</text>
+  </g>
+  <!-- ステップ13-16: Lambda終了処理 -->
+  <g
+     id="g1683"
+     transform="matrix(1.0003985,0,0,0.79718386,2.1682208,181.02367)">
+    <rect
+       x="50.104328"
+       y="725.48688"
+       width="599.76569"
+       height="149.82559"
+       rx="4.9980474"
+       fill="#ffeeee"
+       stroke="#ff6b6b"
+       stroke-width="2.23433"
+       id="rect101" />
+  </g>
+  <text
+     x="54.241524"
+     y="865.46289"
+     font-size="10.7164px"
+     font-weight="bold"
+     fill="#c92a2a"
+     id="text103"
+     transform="scale(1.1202302,0.89267369)"
+     style="stroke-width:0.893029">Lambda終了処理（自動削除）</text>
+  <g
+     id="g1674"
+     transform="translate(4.2002631,0.60033994)">
+    <rect
+       x="252.6635"
+       y="699.05823"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#ff6b6b"
+       stroke="#c92a2a"
+       stroke-width="1"
+       id="rect105" />
+    <text
+       x="352.9285"
+       y="719.61823"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text107">⑪EventBridge検知</text>
+  </g>
+  <line
+     x1="349.76947"
+     y1="803.80829"
+     x2="349.76947"
+     y2="818.80829"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line109" />
+  <g
+     id="g1664"
+     transform="translate(4.2002631,3.3710063)">
+    <rect
+       x="252.6635"
+       y="760.50342"
+       width="200"
+       height="35"
+       rx="3"
+       fill="#f39c12"
+       stroke="#d68910"
+       stroke-width="1"
+       id="rect111" />
+    <text
+       x="355.827"
+       y="781.25342"
+       font-size="10px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text113">⑫Lambda終了 (lmd-020)</text>
+  </g>
+  <!-- 完了 -->
+  <g
+     id="g1642"
+     transform="translate(4.2002478,-2.1657615)">
+    <ellipse
+       cx="352.66351"
+       cy="847.75604"
+       rx="80"
+       ry="25"
+       fill="#2ecc71"
+       stroke="#27ae60"
+       stroke-width="2"
+       id="ellipse117" />
+    <text
+       x="353.00452"
+       y="843.2099"
+       font-size="11px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text119">⑬処理完了</text>
+    <text
+       x="352.35303"
+       y="855.2099"
+       font-size="9px"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text121">EC2削除</text>
+  </g>
+  <line
+     x1="349.76947"
+     y1="739.72485"
+     x2="349.76947"
+     y2="754.72485"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line1813" />
+  <line
+     x1="349.76947"
+     y1="675.64148"
+     x2="349.76947"
+     y2="690.64148"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow-5)"
+     id="line1821"
+     style="marker-end:url(#arrow-flow-5)" />
+  <line
+     x1="349.76947"
+     y1="611.55804"
+     x2="349.76947"
+     y2="626.55804"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow-5)"
+     id="line1943"
+     style="marker-end:url(#arrow-flow-5)" />
+  <line
+     x1="349.76947"
+     y1="547.47461"
+     x2="349.76947"
+     y2="562.47461"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow-5)"
+     id="line1957"
+     style="marker-end:url(#arrow-flow-5)" />
+  <line
+     x1="349.76947"
+     y1="483.3912"
+     x2="349.76947"
+     y2="498.3912"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line2019" />
+  <line
+     x1="349.76947"
+     y1="355.22437"
+     x2="349.76947"
+     y2="370.22437"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line2033" />
+  <line
+     x1="349.76947"
+     y1="291.14096"
+     x2="349.76947"
+     y2="306.14096"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line2047" />
+  <line
+     x1="349.76947"
+     y1="227.05754"
+     x2="349.76947"
+     y2="242.05754"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line2061" />
+  <line
+     x1="349.76947"
+     y1="162.97414"
+     x2="349.76947"
+     y2="177.97414"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line2075" />
+  <line
+     x1="349.76947"
+     y1="98.890717"
+     x2="349.76947"
+     y2="113.89072"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-flow)"
+     id="line2089" />
+  <g
+     id="g564"
+     transform="translate(20.156515,152.96401)">
+    <rect
+       x="509.98688"
+       y="161.36134"
+       width="110"
+       height="35"
+       rx="2"
+       fill="#34495e"
+       stroke="#2c3e50"
+       stroke-width="1"
+       id="rect71-3" />
+    <text
+       x="565.22089"
+       y="181.20134"
+       font-size="9px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text498">ts-010-log-ec2-010</text>
+  </g>
+  <g
+     id="g582"
+     transform="translate(21.297109,74.960258)">
+    <rect
+       x="508.84628"
+       y="167.29706"
+       width="110"
+       height="35"
+       rx="2"
+       fill="#34495e"
+       stroke="#2c3e50"
+       stroke-width="1"
+       id="rect578" />
+    <text
+       x="563.9093"
+       y="182.119"
+       font-size="9px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text580"><tspan
+         sodipodi:role="line"
+         id="tspan596"
+         x="563.9093"
+         y="182.119">/aws/lambda/</tspan><tspan
+         sodipodi:role="line"
+         id="tspan598"
+         x="563.9093"
+         y="194.22513">ts-010-lmd-010</tspan></text>
+  </g>
+  <g
+     id="g608"
+     transform="translate(21.297109,596.57737)">
+    <rect
+       x="508.84628"
+       y="167.29706"
+       width="110"
+       height="35"
+       rx="2"
+       fill="#34495e"
+       stroke="#2c3e50"
+       stroke-width="1"
+       id="rect600" />
+    <text
+       x="563.9093"
+       y="182.119"
+       font-size="9px"
+       font-weight="bold"
+       text-anchor="middle"
+       fill="#ffffff"
+       id="text606"><tspan
+         sodipodi:role="line"
+         id="tspan602"
+         x="563.9093"
+         y="182.119">/aws/lambda/</tspan><tspan
+         sodipodi:role="line"
+         id="tspan604"
+         x="563.9093"
+         y="194.22513">ts-010-lmd-020</tspan></text>
+  </g>
+  <path
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:0.934672;stroke-linecap:round;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+     d="m 464.47064,318.82403 c 6.57986,-0.0749 13.15885,-0.14988 19.29923,-0.18734 6.14038,-0.0375 11.84192,-0.0375 15.21536,1.32033 3.37344,1.35779 4.41905,4.07209 7.47561,5.88683 3.05657,1.81473 8.1233,2.73079 8.09684,3.98603 -0.0264,1.25524 -5.14548,2.84992 -8.52089,24.99201 -3.37541,22.14209 -5.00647,64.82872 -6.06898,116.44241 -1.06251,51.61369 -1.55644,112.15114 -7.48335,145.84829 -5.9269,33.69715 -17.2865,40.55363 -28.64654,47.41036"
+     id="path752"
+     inkscape:path-effect="#path-effect754"
+     inkscape:original-d="m 464.47064,318.82403 c 6.57987,-0.0739 13.15886,-0.14886 19.73698,-0.2248 5.70263,0.001 11.40417,0.001 17.10494,0 1.04653,2.71542 2.09214,5.42972 3.1369,8.14307 5.0678,0.9171 10.13453,1.83316 15.20048,2.74823 -5.11835,1.59574 -10.23738,3.19043 -15.35739,4.78415 -1.63026,42.68933 -3.26132,85.37596 -4.89329,128.06243 -0.49308,60.54089 -0.98701,121.07834 -1.48183,181.616 -11.35919,6.85775 -22.7188,13.71422 -34.07951,20.56984" />
+  <line
+     x1="514.75165"
+     y1="329.40613"
+     x2="531.84741"
+     y2="329.1803"
+     stroke="#2c3e50"
+     stroke-width="1.59871"
+     marker-end="url(#arrow-flow)"
+     id="line1962"
+     style="stroke-width:1;stroke-dasharray:none" />
+  <line
+     x1="463.73981"
+     y1="461.96347"
+     x2="527.67731"
+     y2="461.74966"
+     stroke="#2c3e50"
+     stroke-width="3.15226"
+     marker-end="url(#arrow-flow)"
+     id="line2152"
+     style="stroke-width:1;stroke-dasharray:none" />
+  <line
+     x1="463.87402"
+     y1="205.40936"
+     x2="521.78833"
+     y2="245.2114"
+     stroke="#2c3e50"
+     stroke-width="3.15226"
+     marker-end="url(#arrow-flow)"
+     id="line2202"
+     style="stroke-width:1;stroke-dasharray:none" />
+  <line
+     x1="464.14938"
+     y1="778.97083"
+     x2="527.44647"
+     y2="779.49658"
+     stroke="#2c3e50"
+     stroke-width="3.15226"
+     marker-end="url(#arrow-flow)"
+     id="line2276"
+     style="stroke-width:1;stroke-dasharray:none" />
+</svg>

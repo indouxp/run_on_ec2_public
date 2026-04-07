@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  S3イベント連携によるEC2自動処理 - 概要図
+  時系列: 左→右、上→下
+
+  上段(左→右): ユーザー → PC → 入力ファイル → S3入力 → Lambda → EC2
+  下段右(AWS): SNS / S3出力
+  下段左     : 出力ファイル (PCの直下)
+
+  戻り経路は上段ノード群の下を左方向へ:
+    ⑧ SNS → ユーザー  (破線, y=350)  ← PC・入力ファイルの下を通る
+    ⑨ S3出力 → 出力ファイル (実線, y=368) ← さらに下を通る
+-->
+
+<svg
+   width="880"
+   height="390"
+   viewBox="0 0 880 390"
+   font-family="'Hiragino Kaku Gothic ProN','Meiryo',Arial,sans-serif"
+   version="1.1"
+   id="svg104"
+   sodipodi:docname="overview.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview106"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.0602821"
+     inkscape:cx="485.7198"
+     inkscape:cy="240.50204"
+     inkscape:window-width="1860"
+     inkscape:window-height="1131"
+     inkscape:window-x="60"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg104" />
+  <!-- ===== 背景 ===== -->
+  <rect
+     width="880"
+     height="390"
+     fill="#FAFAFA"
+     id="rect2" />
+  <line
+     x1="283.45804"
+     y1="254.18002"
+     x2="211.95509"
+     y2="215.87051"
+     stroke="#555555"
+     stroke-width="5.17695"
+     marker-end="url(#arr-5)"
+     id="line76-5"
+     style="stroke-width:1.06861;stroke-dasharray:none;marker-end:url(#arr-5)" />
+  <!-- ===== AWS 境界ボックス ===== -->
+  <rect
+     x="352.80252"
+     y="35.324898"
+     width="401.55197"
+     height="302.74554"
+     rx="11.708364"
+     fill="#fff8f0"
+     stroke="#ff9900"
+     stroke-width="1.93843"
+     stroke-dasharray="8, 4"
+     id="rect4"
+     ry="11.708405"
+     transform="matrix(0.99999781,-0.00209141,0,1,0,0)" />
+  <g
+     id="g2022"
+     transform="translate(15.161992,11.106853)">
+    <rect
+       x="347.2952"
+       y="33.583378"
+       width="52"
+       height="22"
+       rx="4"
+       fill="#ff9900"
+       id="rect6"
+       ry="4" />
+    <text
+       x="373.38016"
+       y="48.714237"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#ffffff"
+       id="text8">AWS</text>
+  </g>
+  <!-- ===== 矢印マーカー定義 ===== -->
+  <defs
+     id="defs16">
+    <marker
+       id="arr"
+       markerWidth="9"
+       markerHeight="7"
+       refX="8"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0,0 9,3.5 0,7 "
+         fill="#555555"
+         id="polygon10" />
+    </marker>
+    <marker
+       id="arr-dash"
+       markerWidth="2.0005715"
+       markerHeight="1.556"
+       refX="8"
+       refY="3.5"
+       orient="auto"
+       viewBox="0 0 9 7"
+       preserveAspectRatio="xMidYMid">
+      <polygon
+         points="0,7 0,0 9,3.5 "
+         fill="#888888"
+         id="polygon13" />
+    </marker>
+    <marker
+       id="arr-3"
+       markerWidth="9"
+       markerHeight="7"
+       refX="8"
+       refY="3.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse"
+       viewBox="0 0 9 7"
+       preserveAspectRatio="xMidYMid">
+      <polygon
+         points="0,0 9,3.5 0,7 "
+         fill="#555555"
+         id="polygon10-6" />
+    </marker>
+    <marker
+       id="arr-5"
+       markerWidth="6.4285712"
+       markerHeight="5"
+       refX="8"
+       refY="3.5"
+       orient="auto"
+       viewBox="0 0 9 7"
+       preserveAspectRatio="xMidYMid"
+       markerUnits="userSpaceOnUse">
+      <polygon
+         points="0,7 0,0 9,3.5 "
+         fill="#555555"
+         id="polygon10-3" />
+    </marker>
+  </defs>
+  <!-- ===== 上段ノード (y=83〜143) ===== -->
+  <!-- ユーザー -->
+  <g
+     id="g3971"
+     transform="translate(-1.2807419,86.980256)">
+    <circle
+       cx="45"
+       cy="90"
+       r="13"
+       fill="none"
+       stroke="#2e5496"
+       stroke-width="2.5"
+       id="circle18" />
+    <line
+       x1="45"
+       y1="103"
+       x2="45"
+       y2="138"
+       stroke="#2e5496"
+       stroke-width="2.5"
+       id="line20" />
+    <line
+       x1="28"
+       y1="119"
+       x2="62"
+       y2="119"
+       stroke="#2e5496"
+       stroke-width="2.5"
+       id="line22" />
+    <line
+       x1="45"
+       y1="138"
+       x2="30"
+       y2="158"
+       stroke="#2e5496"
+       stroke-width="2.5"
+       id="line24" />
+    <line
+       x1="45"
+       y1="138"
+       x2="60"
+       y2="158"
+       stroke="#2e5496"
+       stroke-width="2.5"
+       id="line26" />
+    <text
+       x="45"
+       y="176"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#2e5496"
+       id="text28">ユーザー</text>
+  </g>
+  <!-- ユーザーPC -->
+  <g
+     id="g4000"
+     transform="translate(11.852789,-5.3156629)">
+    <rect
+       x="83.647789"
+       y="174.20224"
+       width="115"
+       height="60"
+       rx="6"
+       fill="#dce6f1"
+       stroke="#4472c4"
+       stroke-width="2"
+       id="rect30"
+       ry="6" />
+    <text
+       x="141.10678"
+       y="198.88016"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#1f3864"
+       id="text32">ユーザー</text>
+    <text
+       x="140.91049"
+       y="217.34074"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#1f3864"
+       id="text34">PC</text>
+  </g>
+  <!-- 入力ファイル -->
+  <!-- S3 入力バケット (AWS内) -->
+  <!-- Lambda (AWS内) -->
+  <!-- EC2 (AWS内) -->
+  <!-- ===== 下段ノード (y=263〜323) ===== -->
+  <!-- 出力ファイル (PCの直下・AWS外) -->
+  <!-- SNS (AWS内) -->
+  <!-- S3 出力バケット (AWS内) -->
+  <!-- ===== 矢印: 主処理フロー (上段 左→右) ===== -->
+  <!-- ① ユーザー → PC -->
+  <!-- ② PC → 入力ファイル -->
+  <!-- ③ 入力ファイル → S3入力 (アップロード) -->
+  <line
+     x1="344.11694"
+     y1="113.29652"
+     x2="360.45627"
+     y2="113.29652"
+     stroke="#555555"
+     stroke-width="2.00001"
+     marker-end="url(#arr)"
+     id="line76"
+     style="marker-end:url(#arr-5)" />
+  <text
+     x="312.42615"
+     y="155.9044"
+     text-anchor="middle"
+     font-size="10px"
+     fill="#444444"
+     id="text78">アップロード</text>
+  <!-- ④ S3入力 → Lambda (トリガー) -->
+  <line
+     x1="477.17203"
+     y1="113"
+     x2="493.30048"
+     y2="113"
+     stroke="#555555"
+     stroke-width="2"
+     marker-end="url(#arr)"
+     id="line80"
+     style="marker-end:url(#arr-5)" />
+  <text
+     x="483.60013"
+     y="153.66597"
+     text-anchor="middle"
+     font-size="10px"
+     fill="#444444"
+     id="text82">トリガー</text>
+  <!-- ⑤ Lambda → EC2 (EC2起動) -->
+  <line
+     x1="609.87408"
+     y1="113"
+     x2="627.21869"
+     y2="113"
+     stroke="#555555"
+     stroke-width="1.57084"
+     marker-end="url(#arr)"
+     id="line84"
+     style="marker-end:url(#arr-5)" />
+  <text
+     x="615.04144"
+     y="154.36499"
+     text-anchor="middle"
+     font-size="10px"
+     fill="#444444"
+     id="text86">EC2起動</text>
+  <!-- ⑥ EC2 → S3出力 (結果保存・垂直) -->
+  <line
+     x1="687"
+     y1="141.71286"
+     x2="687"
+     y2="252.95695"
+     stroke="#555555"
+     stroke-width="2"
+     marker-end="url(#arr)"
+     id="line88"
+     style="marker-end:url(#arr-5)" />
+  <g
+     id="g420"
+     transform="matrix(0.95867575,0,0,1.0006848,27.617578,-1.7500748)">
+    <rect
+       x="348"
+       y="83"
+       width="120"
+       height="60"
+       rx="6"
+       fill="#ffe9cc"
+       stroke="#ff9900"
+       stroke-width="2"
+       id="rect42"
+       ry="6" />
+    <text
+       x="408"
+       y="107"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#7d3c00"
+       id="text44">S3</text>
+    <text
+       x="408"
+       y="126"
+       text-anchor="middle"
+       font-size="11px"
+       fill="#7d3c00"
+       id="text46">入力バケット</text>
+  </g>
+  <g
+     id="g476"
+     transform="translate(4.1252467,-15.492917)">
+    <rect
+       x="490.98514"
+       y="183.13651"
+       width="115"
+       height="60"
+       rx="6"
+       fill="#ffe9cc"
+       stroke="#ff9900"
+       stroke-width="2"
+       id="rect62"
+       ry="6" />
+    <text
+       x="548.55176"
+       y="217.6116"
+       text-anchor="middle"
+       font-size="13px"
+       font-weight="bold"
+       fill="#7d3c00"
+       id="text64">SNS</text>
+  </g>
+  <g
+     id="g632"
+     transform="translate(4.1252467,-1.672689)">
+    <rect
+       x="490"
+       y="83"
+       width="115"
+       height="60"
+       rx="6"
+       fill="#ffe9cc"
+       stroke="#ff9900"
+       stroke-width="2"
+       id="rect48"
+       ry="6" />
+    <text
+       x="547.02393"
+       y="117.64648"
+       text-anchor="middle"
+       font-size="13px"
+       font-weight="bold"
+       fill="#7d3c00"
+       id="text50">Lambda</text>
+  </g>
+  <g
+     id="g660"
+     transform="matrix(1.000366,0,0,0.99946878,-0.23035567,-1.62824)">
+    <rect
+       x="628"
+       y="83"
+       width="115"
+       height="60"
+       rx="6"
+       fill="#ffe9cc"
+       stroke="#ff9900"
+       stroke-width="2"
+       id="rect52" />
+    <text
+       x="685.32544"
+       y="117.4751"
+       text-anchor="middle"
+       font-size="13px"
+       font-weight="bold"
+       fill="#7d3c00"
+       id="text54">EC2</text>
+  </g>
+  <g
+     id="g689"
+     transform="matrix(0.95901922,0,0,1.0001681,25.715314,-8.1371807)">
+    <rect
+       x="628"
+       y="262.08521"
+       width="120"
+       height="60"
+       rx="6"
+       fill="#ffe9cc"
+       stroke="#ff9900"
+       stroke-width="2"
+       id="rect66"
+       ry="6" />
+    <text
+       x="688.04395"
+       y="287"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#7d3c00"
+       id="text68">S3</text>
+    <text
+       x="688.37866"
+       y="306"
+       text-anchor="middle"
+       font-size="11px"
+       fill="#7d3c00"
+       id="text70">出力バケット</text>
+  </g>
+  <text
+     x="709.26489"
+     y="197.23454"
+     font-size="9.79207px"
+     fill="#444444"
+     id="text90"
+     transform="scale(0.97903686,1.021412)"
+     style="stroke-width:0.979207">結果保存</text>
+  <!-- ⑦ EC2 → SNS (完了通知・斜め破線) -->
+  <line
+     x1="650.39282"
+     y1="142.76341"
+     x2="609.61694"
+     y2="197.6828"
+     stroke="#888888"
+     stroke-width="1.82659"
+     stroke-dasharray="6, 3"
+     marker-end="url(#arr-dash)"
+     id="line92"
+     style="marker-end:url(#arr-5)" />
+  <text
+     x="639.91205"
+     y="199.16722"
+     text-anchor="middle"
+     font-size="10px"
+     fill="#666666"
+     id="text94">完了通知</text>
+  <!-- ===== 矢印: 戻り経路 (下段 右→左) ===== -->
+  <!--
+    どちらも PC・入力ファイル(y=143 まで)の下を通って左へ折り返す
+    ⑧ SNS通知  : y=350 (上の破線)
+    ⑨ ダウンロード: y=368 (下の実線)
+    2本は y が異なるため交差しない
+  -->
+  <!-- ⑧ SNS → ユーザー (メール/SMS通知・破線) -->
+  <!-- SNS下端(547,323) → 下へ(547,350) → 左へ(45,350) → 上へ(45,163) -->
+  <text
+     x="441.67963"
+     y="215.97131"
+     text-anchor="middle"
+     font-size="10px"
+     fill="#666666"
+     id="text98">メール / SMS 通知</text>
+  <!-- ⑨ S3出力 → 出力ファイル (ダウンロード・実線) -->
+  <!-- S3出力下端(688,323) → 下へ(688,368) → 左へ(143,368) → 上へ(143,324) -->
+  <text
+     x="314.75357"
+     y="325.83466"
+     text-anchor="middle"
+     font-size="10px"
+     fill="#444444"
+     id="text102">ダウンロード</text>
+  <line
+     x1="627.29675"
+     y1="279.93924"
+     x2="344.39188"
+     y2="280.26932"
+     stroke="#555555"
+     stroke-width="5.82887"
+     marker-end="url(#arr-3)"
+     id="line76-7"
+     style="stroke-width:2.00398;stroke-dasharray:none;marker-end:url(#arr-5)" />
+  <line
+     x1="491.91699"
+     y1="201.33936"
+     x2="212.59213"
+     y2="201.23642"
+     stroke="#555555"
+     stroke-width="5.82887"
+     marker-end="url(#arr-3)"
+     id="line2719"
+     style="stroke-width:0.594864;stroke-dasharray:none;marker-end:url(#arr-5)" />
+  <g
+     id="g440"
+     transform="translate(10.149757)">
+    <rect
+       x="218.23956"
+       y="253.99191"
+       width="115"
+       height="60"
+       rx="6"
+       fill="#e2efda"
+       stroke="#70ad47"
+       stroke-width="2"
+       id="rect56"
+       ry="6" />
+    <text
+       x="275.74249"
+       y="276.47742"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#375623"
+       id="text58">出力</text>
+    <text
+       x="275.13605"
+       y="299.88531"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#375623"
+       id="text60">ファイル</text>
+  </g>
+  <g
+     id="g384"
+     transform="translate(3.7245415)">
+    <rect
+       x="224.71011"
+       y="83.826584"
+       width="114.90933"
+       height="59.909332"
+       rx="6.5662475"
+       fill="#e2efda"
+       stroke="#70ad47"
+       stroke-width="2.09067"
+       id="rect36"
+       ry="6.5662475" />
+    <text
+       x="282.44604"
+       y="108"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#375623"
+       id="text38">入力</text>
+    <text
+       x="281.56128"
+       y="128"
+       text-anchor="middle"
+       font-size="12px"
+       font-weight="bold"
+       fill="#375623"
+       id="text40">ファイル</text>
+  </g>
+  <line
+     x1="213.01286"
+     y1="185.56906"
+     x2="285.32529"
+     y2="144.81976"
+     stroke="#555555"
+     stroke-width="5.17695"
+     marker-end="url(#arr-5)"
+     id="line4450"
+     style="stroke-width:1.10306;stroke-dasharray:none;marker-end:url(#arr-5)" />
+</svg>

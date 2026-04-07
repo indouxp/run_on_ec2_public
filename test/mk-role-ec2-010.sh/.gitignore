@@ -1,0 +1,11 @@
+assume-role.sh
+config.sh
+config.sh.org
+mk-role-ec2-010.sh
+mk-role-ec2-010.sh.log
+mk-role-ec2-010.sh.org
+
+mk-role-ec2-010.sh.src/:
+ec2-custom-policy.json
+policy-check.json
+trust-policy-ec2.json

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="620"
+   height="1020"
+   font-family="sans-serif"
+   version="1.1"
+   id="svg26"
+   sodipodi:docname="user_data_flow.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview26"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.78529412"
+     inkscape:cx="310.07491"
+     inkscape:cy="510"
+     inkscape:window-width="1920"
+     inkscape:window-height="1055"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg26" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      .box { fill: #f0f4f8; stroke: #333; stroke-width: 1.5; }
+      .diamond { fill: #e1f5fe; stroke: #333; stroke-width: 1.5; }
+      .oval { fill: #e8f5e9; stroke: #333; stroke-width: 1.5; }
+      .line { fill: none; stroke: #333; stroke-width: 1.5; }
+      .text { font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
+      .line-label { font-size: 13px; text-anchor: middle; fill: #555; }
+    </style>
+    <marker
+       id="arrowhead"
+       viewBox="0 0 10 10"
+       refX="5"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M 0 0 L 10 5 L 0 10 z"
+         fill="#333"
+         id="path1" />
+    </marker>
+  </defs>
+  <!-- Nodes -->
+  <g
+     id="start">
+    <ellipse
+       class="oval"
+       cx="310"
+       cy="40"
+       rx="70"
+       ry="30"
+       id="ellipse1" />
+    <text
+       class="text"
+       x="310"
+       y="40"
+       id="text1">開始</text>
+  </g>
+  <g
+     id="init">
+    <rect
+       class="box"
+       x="160"
+       y="100"
+       width="300"
+       height="60"
+       rx="5"
+       id="rect1" />
+    <text
+       class="text"
+       x="310"
+       y="120"
+       id="text2">初期設定 &amp; CloudWatch Agent</text>
+    <text
+       class="text"
+       x="310"
+       y="140"
+       id="text3">セットアップ</text>
+  </g>
+  <g
+     id="download">
+    <rect
+       class="box"
+       x="160"
+       y="190"
+       width="300"
+       height="60"
+       rx="5"
+       id="rect3" />
+    <text
+       class="text"
+       x="310"
+       y="210"
+       id="text4">パラメータ読込 &amp;</text>
+    <text
+       class="text"
+       x="310"
+       y="230"
+       id="text5">実行/入力ファイル ダウンロード</text>
+  </g>
+  <g
+     id="download_ok">
+    <path
+       class="diamond"
+       d="M 310 280 l 120 50 l -120 50 l -120 -50 z"
+       id="path5" />
+    <text
+       class="text"
+       x="310"
+       y="330"
+       id="text6">ダウンロード成功?</text>
+  </g>
+  <g
+     id="exec">
+    <rect
+       class="box"
+       x="190"
+       y="410"
+       width="240"
+       height="50"
+       rx="5"
+       id="rect6" />
+    <text
+       class="text"
+       x="310"
+       y="435"
+       id="text7">ユーザー定義スクリプト実行</text>
+  </g>
+  <g
+     id="exec_ok">
+    <path
+       class="diamond"
+       d="M 310 490 l 120 50 l -120 50 l -120 -50 z"
+       id="path7" />
+    <text
+       class="text"
+       x="310"
+       y="530"
+       id="text8">実行成功?</text>
+    <text
+       class="text"
+       x="310"
+       y="550"
+       id="text9">(Exit Code 0)</text>
+  </g>
+  <g
+     id="msg_success">
+    <rect
+       class="box"
+       x="400"
+       y="620"
+       width="180"
+       height="50"
+       rx="5"
+       id="rect9" />
+    <text
+       class="text"
+       x="490"
+       y="645"
+       id="text10">「成功」メッセージ設定</text>
+  </g>
+  <g
+     id="msg_fail">
+    <rect
+       class="box"
+       x="40"
+       y="620"
+       width="180"
+       height="50"
+       rx="5"
+       id="rect10" />
+    <text
+       class="text"
+       x="130"
+       y="645"
+       id="text11">「失敗」メッセージ設定</text>
+  </g>
+  <g
+     id="upload_notify">
+    <rect
+       class="box"
+       x="160"
+       y="730"
+       width="300"
+       height="60"
+       rx="5"
+       id="rect11" />
+    <text
+       class="text"
+       x="310"
+       y="750"
+       id="text12">成果物アップロード &amp;</text>
+    <text
+       class="text"
+       x="310"
+       y="770"
+       id="text13">結果を通知 (SNS/SES)</text>
+  </g>
+  <g
+     id="shutdown">
+    <rect
+       class="box"
+       x="190"
+       y="820"
+       width="240"
+       height="50"
+       rx="5"
+       id="rect13" />
+    <text
+       class="text"
+       x="310"
+       y="845"
+       id="text14">インスタンス自己終了</text>
+  </g>
+  <g
+     id="end"
+     transform="translate(0,24.194757)">
+    <ellipse
+       class="oval"
+       cx="310"
+       cy="910"
+       rx="70"
+       ry="30"
+       id="ellipse14" />
+    <text
+       class="text"
+       x="310"
+       y="910"
+       id="text15">終了</text>
+  </g>
+  <!-- Connectors -->
+  <path
+     class="line"
+     d="M 310 70 V 100"
+     marker-end="url(#arrowhead)"
+     id="path15" />
+  <path
+     class="line"
+     d="M 310 160 V 190"
+     marker-end="url(#arrowhead)"
+     id="path16" />
+  <path
+     class="line"
+     d="M 310 250 V 280"
+     marker-end="url(#arrowhead)"
+     id="path17" />
+  <path
+     class="line"
+     d="M 310 380 V 410"
+     marker-end="url(#arrowhead)"
+     id="path18" />
+  <text
+     class="line-label"
+     x="330"
+     y="395"
+     id="text18">Yes</text>
+  <path
+     class="line"
+     d="M 310 460 V 490"
+     marker-end="url(#arrowhead)"
+     id="path19" />
+  <path
+     class="line"
+     d="M 430 540 H 490 V 620"
+     marker-end="url(#arrowhead)"
+     id="path20" />
+  <text
+     class="line-label"
+     x="460"
+     y="535"
+     id="text20">Yes</text>
+  <path
+     class="line"
+     d="M 190 540 H 130 V 620"
+     marker-end="url(#arrowhead)"
+     id="path21" />
+  <text
+     class="line-label"
+     x="160"
+     y="535"
+     id="text21">No</text>
+  <path
+     class="line"
+     d="M 130 670 V 700 H 310 V 730"
+     marker-end="url(#arrowhead)"
+     id="path22" />
+  <path
+     class="line"
+     d="M 490 670 V 700 H 310"
+     id="path23" />
+  <path
+     class="line"
+     d="M 190.07015,330.06556 H 30.931258 V 759.93557 H 155.96896"
+     marker-end="url(#arrowhead)"
+     id="path24" />
+  <text
+     class="line-label"
+     x="120"
+     y="325"
+     id="text24">No (致命的エラー)</text>
+  <path
+     class="line"
+     d="M 310 790 V 820"
+     marker-end="url(#arrowhead)"
+     id="path25" />
+  <path
+     class="line"
+     d="M 310 870 V 900"
+     marker-end="url(#arrowhead)"
+     id="path26" />
+</svg>
