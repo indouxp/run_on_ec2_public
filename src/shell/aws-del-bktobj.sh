@@ -7,6 +7,14 @@
 #
 MY_NAME=${0##*/}
 
+# スクリプトが配置されているディレクトリ（work/ を想定）
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+# 環境変数（AWS_ACCOUNT_ID 等）を読み込む
+source "${SCRIPT_DIR}/.env"
+
+# 以前の AssumeRole セッショントークンが残っていると AssumeRole が失敗するため事前にクリア
+unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+
 # 対象バケット名
 BUCKET_NAME="${BKT_IN}"
 if [[ "$#" -ne "0" ]]; then
