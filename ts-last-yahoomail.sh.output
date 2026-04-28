@@ -1,0 +1,40 @@
+Received: from xxx.xxx.xxx.xxx
+ by [MASKED].yahoo.co.jp with HTTPS; Mon, 30 Mar 2026 19:20:54 +0900
+Return-Path: <[MASKED]@ap-northeast-1.amazonses.com>
+X-Originating-Ip: [xxx.xxx.xxx.xxx]
+Received-SPF: pass (domain of ap-northeast-1.amazonses.com designates xxx.xxx.xxx.xxx as permitted sender)
+ client-ip=xxx.xxx.xxx.xxx;
+ envelope-from=[MASKED]@ap-northeast-1.amazonses.com;
+X-Z-PassedDKIMSig: amazonses.com
+Authentication-Results: [MASKED].yahoo.co.jp;
+ dkim=pass header.i=@amazonses.com header.s=[MASKED];
+ spf=pass smtp.mailfrom=ap-northeast-1.amazonses.com;
+ dmarc=fail (p=NONE,sp=QUARANTINE) header.from=gmail.com;
+X-Apparently-To: ****@****.ne.jp; Mon, 30 Mar 2026 19:20:54 +0900
+X-YMailISG: [MASKED]
+X-Z-SRV: [MASKED]
+Received: from xxx.xxx.xxx.xxx (EHLO e234-1.smtp-out.ap-northeast-1.amazonses.com)
+ by xxx.xxx.xxx.xxx with SMTPs
+ (version=TLS1_2 cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256);
+ Mon, 30 Mar 2026 19:20:54 +0900
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=[MASKED]; d=amazonses.com; t=[MASKED];
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date:Feedback-ID;
+	bh=[MASKED];
+	b=[MASKED]
+From: ****@****.com
+To: ****@****.ne.jp
+Subject: SUCCESS: Job 'run.sh' executed successfully
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Message-ID: <[MASKED]@ap-northeast-1.amazonses.com>
+Date: Mon, 30 Mar 2026 10:20:53 +0000
+Feedback-ID: [MASKED]:AmazonSES
+X-SES-Outgoing: 2026.03.30-xxx.xxx.xxx.xxx
+Content-Length: 166
+
+Job 'run.sh' completed successfully. 2026-03-30 10:05:40 - 2026-03-30 19:20:29
+
+Log file: s3://${BKT_OUT}/run.log
+Result file: s3://${BKT_OUT}/*.mp4 *act.log
