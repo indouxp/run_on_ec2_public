@@ -12,3 +12,18 @@ grep -n 'BKT_' /home/indo/Public/run_on_ec2_public/src/conf/run.conf
 # マスク状態の確認
 grep -rn 'ts-010-bkt\|120\.74\.239\.212' /home/indo/Public/run_on_ec2_public --exclude-dir=.git
 ```
+
+---
+## 2026-04-28（夜）セッション継続コマンド
+
+```bash
+# 個人情報チェックの残課題確認
+# 1. docs/設計書/基本設計.md の 作成者/承認者: tsystem をマスクするか検討
+grep -n 'tsystem' /home/indo/Public/run_on_ec2_public/docs/設計書/基本設計.md
+
+# 2. claude-logs/ のローカルパス露出を確認
+grep -rn '/home/indo' /home/indo/Public/run_on_ec2_public/claude-logs/ --include="*.md"
+
+# 3. 今後のpush前チェック用コマンド（git管理ファイルのみ対象）
+git ls-files | xargs grep -l -E "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|AKIA[0-9A-Z]{16}|\+81[0-9]{9,10}" 2>/dev/null
+```
