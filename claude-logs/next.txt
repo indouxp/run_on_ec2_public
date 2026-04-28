@@ -1,0 +1,14 @@
+
+---
+## 2026-04-28 セッション継続コマンド
+
+```bash
+# リポジトリをPublicに戻す（GitHub Web UI で実施）
+# Settings > Danger Zone > Change repository visibility > Public
+
+# バケット名変数の設定確認
+grep -n 'BKT_' /home/indo/Public/run_on_ec2_public/src/conf/run.conf
+
+# マスク状態の確認
+grep -rn 'ts-010-bkt\|120\.74\.239\.212' /home/indo/Public/run_on_ec2_public --exclude-dir=.git
+```
