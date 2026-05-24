@@ -27,3 +27,41 @@ grep -rn '/home/indo' /home/indo/Public/run_on_ec2_public/claude-logs/ --include
 # 3. 今後のpush前チェック用コマンド（git管理ファイルのみ対象）
 git ls-files | xargs grep -l -E "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|AKIA[0-9A-Z]{16}|\+81[0-9]{9,10}" 2>/dev/null
 ```
+
+---
+## 2026-05-24 セッション: Public化対応(LICENSE + 機微情報除去)完了後
+
+**実施内容**: MIT LICENSE追加、README補強(バッジ・免責事項・動作環境)、実AWSリソースID ダミー化、git-filter-repo で全履歴のメール&ID置換
+
+**確認事項**:
+
+```bash
+# 1. GitHub Web画面でのバッジ・LICENSE認識確認
+#    (ブラウザで https://github.com/indouxp/run_on_ec2_public を開く)
+
+# 2. ローカルの残存確認
+grep -rnE "vpc-0f46eb3fa356d157f|subnet-063203bc95ed6820b|sg-0960eaa7522bc45d1|igw-094f393a782094302|rtb-06bba13e760c7e419" --exclude-dir=.git /home/indo/Public/run_on_ec2_public
+# → 0件であること(master branch のみ走査, 履歴は filter-repo済)
+
+# 3. 作者メール確認(noreply化確認)
+git log --all --format="%ae" | sort -u
+# → indouxp@users.noreply.github.com のみであること
+
+# 4. バックアップ削除(ロールバック不要と判定した場合)
+rm -rf /home/indo/Public/run_on_ec2_public.backup-20260524_191406.git
+
+# 5. infra ローカルログの整理検討(必要に応じて)
+# (33個のログファイル: grep -rl で機微情報スキャン推奨)
+ls infra/*.log | wc -l
+```
+
+**次セッション以降のpush前チェック(自動化推奨)**:
+
+```bash
+# git管理ファイルのみを対象に個人情報スキャン
+git ls-files | xargs grep -E "indou\.tsystem|@gmail\.com|\+81[0-9]|aws_secret|AKIA[0-9A-Z]" 2>/dev/null && echo "WARNING: 機微情報検出" || echo "OK"
+```
+
+**バックアップ所在**: `/home/indo/Public/run_on_ec2_public.backup-20260524_191406.git`
+(force-push直前の状態。ロールバック必要時は `git push --mirror --force` で復旧)
+```
