@@ -21,9 +21,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.90201103"
-     inkscape:cx="875.82078"
-     inkscape:cy="401.87979"
+     inkscape:zoom="0.78549062"
+     inkscape:cx="695.10697"
+     inkscape:cy="279.44319"
      inkscape:window-width="1920"
      inkscape:window-height="1029"
      inkscape:window-x="0"
@@ -94,7 +94,7 @@
      stroke-dasharray="12, 10"
      id="rect14" />
   <path
-     d="m 1203.7265,276.69825 c -25.2948,100.1067 -184.2468,89.66646 -367.63596,118.68045"
+     d="m 1203.815,282.09126 c -25.3069,95.85927 -184.3346,85.86199 -367.81116,113.64494"
      fill="none"
      stroke="#ff9900"
      stroke-width="6"
@@ -102,7 +102,7 @@
      marker-end="url(#arrowOrange-7)"
      id="path118-3"
      sodipodi:nodetypes="cc"
-     style="fill:none;fill-opacity:1;stroke:#4b5563;stroke-width:3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
+     style="fill:none;fill-opacity:1;stroke:#4b5563;stroke-width:2.44697;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
   <!-- 背景 -->
   <!-- タイトル -->
   <text
@@ -213,36 +213,6 @@
      id="text72">Lambda</text>
   <!-- EC2 -->
   <!-- メール通知 -->
-  <g
-     transform="translate(995.39698,385.05634)"
-     id="g96">
-    <rect
-       x="0"
-       y="0"
-       width="150"
-       height="80"
-       rx="18"
-       fill="#22c55e"
-       id="rect88" />
-    <path
-       d="m 28,22 h 94 V 58 H 28 Z"
-       fill="#ffffff"
-       id="path90" />
-    <path
-       d="M 28,22 75,50 122,22"
-       fill="none"
-       stroke="#22c55e"
-       stroke-width="4"
-       id="path92" />
-    <text
-       x="75"
-       y="118"
-       text-anchor="middle"
-       font-size="22px"
-       font-family="sans-serif"
-       fill="#111827"
-       id="text94">SMS、Mail通知</text>
-  </g>
   <!-- 出力ファイル -->
   <!-- メイン矢印 -->
   <line
@@ -254,7 +224,7 @@
      stroke-width="6"
      marker-end="url(#arrow)"
      id="line108"
-     style="stroke-width:2.54698;stroke-dasharray:none" />
+     style="stroke-width:2.5;stroke-dasharray:none" />
   <line
      x1="416.25739"
      y1="230.05635"
@@ -264,7 +234,7 @@
      stroke-width="6"
      marker-end="url(#arrow)"
      id="line110"
-     style="stroke-width:2.5529;stroke-dasharray:none" />
+     style="stroke-width:2.5;stroke-dasharray:none" />
   <line
      x1="628.89807"
      y1="230.05635"
@@ -274,7 +244,7 @@
      stroke-width="6"
      marker-end="url(#arrow)"
      id="line112"
-     style="stroke-width:2.64663;stroke-dasharray:none" />
+     style="stroke-width:2.5;stroke-dasharray:none" />
   <line
      x1="835.83331"
      y1="231.87019"
@@ -284,7 +254,7 @@
      stroke-width="6"
      marker-end="url(#arrow)"
      id="line114"
-     style="stroke-width:2.74706;stroke-dasharray:none" />
+     style="stroke-width:2.5;stroke-dasharray:none" />
   <line
      x1="1075.9661"
      y1="230.05635"
@@ -294,10 +264,10 @@
      stroke-width="6"
      marker-end="url(#arrow)"
      id="line116"
-     style="stroke-width:2.59492;stroke-dasharray:none" />
+     style="stroke-width:2.5;stroke-dasharray:none" />
   <!-- EC2 -> Mail -->
   <path
-     d="m 1227.2934,280.11364 c 8.7506,127.04912 3.5152,110.44444 -79.0702,144.71178"
+     d="m 1256.563,282.91979 c 9.4598,161.98357 3.8001,140.81313 -85.4785,184.50289"
      fill="none"
      stroke="#ff9900"
      stroke-width="6"
@@ -305,7 +275,7 @@
      marker-end="url(#arrowOrange)"
      id="path118"
      sodipodi:nodetypes="cc"
-     style="stroke-width:2.90541;stroke-dasharray:4.84236, 3.87388;stroke-dashoffset:0" />
+     style="stroke:#4b5563;stroke-width:2.93519;stroke-dasharray:4.892, 3.91359;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
   <!-- 出力戻り -->
   <g
      transform="translate(255.39698,175.05634)"
@@ -612,9 +582,9 @@
      marker-end="url(#arrowOrange-7)"
      id="path9143"
      sodipodi:nodetypes="cc"
-     style="fill:none;fill-opacity:1;stroke:#4b5563;stroke-width:2.81566;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
+     style="fill:none;fill-opacity:1;stroke:#4b5563;stroke-width:2.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
   <path
-     d="M 462.35832,429.27825 C 382.34075,419.72913 324.9193,403.27322 213.06236,320.13197"
+     d="M 462.52118,437.13965 C 439.98453,427.38652 423.81199,410.57905 392.30791,325.6616"
      fill="none"
      stroke="#ff9900"
      stroke-width="6"
@@ -622,10 +592,75 @@
      marker-end="url(#arrowOrange-7)"
      id="path9591"
      sodipodi:nodetypes="cc"
-     style="fill:none;fill-opacity:1;stroke:#4b5563;stroke-width:3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
+     style="fill:none;fill-opacity:1;stroke:#4b5563;stroke-width:2.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow)" />
   <path
-     style="fill:none;fill-opacity:1;stroke:#008000;stroke-width:3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow);paint-order:fill markers stroke"
-     d="m 992.8123,430.54958 c 0,0 -153.91904,103.11479 -242.51406,120.08317 C 627.67155,574.11913 493.06225,566.16297 376.96859,520.21542 311.44012,494.28057 211.57078,388.52286 211.57078,388.52286"
+     style="fill:none;fill-opacity:1;stroke:#008000;stroke-width:2.63243;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow);paint-order:fill markers stroke"
+     d="m 1107.487,444.13521 c 0,0 -171.41726,124.21189 -270.08419,144.65196 C 700.83532,617.07882 550.923,607.49484 421.63126,552.14651 348.65319,520.90544 237.43023,393.50989 237.43023,393.50989"
      id="path34851"
      sodipodi:nodetypes="cssc" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:#008000;stroke-width:2.65441;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#arrow);paint-order:fill markers stroke"
+     d="m 1112.9467,443.14128 c 0,0 -151.09305,124.52245 -238.06146,145.01362 C 754.50998,616.51729 622.37214,606.90936 508.40997,551.42264 444.0846,520.10346 346.04887,392.3894 346.04887,392.3894"
+     id="path1113"
+     sodipodi:nodetypes="cssc" />
+  <rect
+     style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.35807;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     id="rect4369"
+     width="34.613003"
+     height="64.767784"
+     x="205.7189"
+     y="306.6348"
+     ry="8.8524723" />
+  <rect
+     style="fill:#bbddf4;fill-opacity:1;stroke:#000000;stroke-width:1.94922;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     id="rect7437"
+     width="30.524597"
+     height="50.182613"
+     x="207.76311"
+     y="313.88635"
+     ry="6.8589678" />
+  <ellipse
+     style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2.51981;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     id="path7509"
+     ry="0.80007571"
+     rx="0.97834337"
+     cy="367.7121"
+     cx="223.02541" />
+  <rect
+     style="fill:none;stroke:#008000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke fill markers"
+     id="rect7606"
+     width="11.386643"
+     height="0.10633837"
+     x="217.33208"
+     y="310.63663" />
+  <g
+     transform="translate(1016.9956,439.18564)"
+     id="g96">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="80"
+       rx="18"
+       fill="#22c55e"
+       id="rect88" />
+    <path
+       d="m 28,22 h 94 V 58 H 28 Z"
+       fill="#ffffff"
+       id="path90" />
+    <path
+       d="M 28,22 75,50 122,22"
+       fill="none"
+       stroke="#22c55e"
+       stroke-width="4"
+       id="path92" />
+    <text
+       x="75"
+       y="118"
+       text-anchor="middle"
+       font-size="22px"
+       font-family="sans-serif"
+       fill="#111827"
+       id="text94">SMS、Mail通知</text>
+  </g>
 </svg>
