@@ -164,9 +164,11 @@ def send_error_notification(error, context, config):
                 PhoneNumber=sms_to,
                 Message=f"[Error] Lambda: {context.function_name}. See email for details."
             )
-            logger.info(f"Successfully sent error notification to SMS: {sms_to}")
+            #logger.info(f"Successfully sent error notification to SMS: {sms_to}")  # ts: 20261110 個人情報
+            logger.info(f"Successfully sent error notification to SMS")
         except Exception as e:
-            logger.error(f"Failed to send SNS notification to {sms_to}: {e}")
+            #logger.error(f"Failed to send SNS notification to {sms_to}: {e}")      # ts: 20261110 個人情報
+            logger.error(f"Failed to send SNS notification to SMS: {e}")
     else:
         logger.warning("SMS number not found in config. Skipping SNS notification.")
 
@@ -188,9 +190,11 @@ def send_error_notification(error, context, config):
                     'Body': {'Text': {'Data': message, 'Charset': 'UTF-8'}}
                 }
             )
-            logger.info(f"Successfully sent error notification to Email: {mail_to}")
+            #logger.info(f"Successfully sent error notification to Email: {mail_to}")   # ts: 20261110 個人情報
+            logger.info(f"Successfully sent error notification to Email")
         except Exception as e:
-            logger.error(f"Failed to send SES notification to {mail_to}: {e}")
+            #logger.error(f"Failed to send SES notification to {mail_to}: {e}")         # ts: 20261110 個人情報
+            logger.error(f"Failed to send SES notification to Email: {e}")
     else:
         logger.warning("Email address ('mail') not found in config. Skipping SES notification.")
 
