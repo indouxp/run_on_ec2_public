@@ -46,11 +46,13 @@ def validate_config(config):
 
     # smsのフォーマットチェック (日本の+81形式を想定)
     if not isinstance(config['sms'], str) or not config['sms'].startswith('+81') or not config['sms'][1:].isdigit():
-        raise ValueError(f"Configuration error: Invalid SMS format for 'sms'. Must be a string starting with '+81'. Found: {config['sms']}")
+        #raise ValueError(f"Configuration error: Invalid SMS format for 'sms'. Must be a string starting with '+81'. Found: {config['sms']}")
+        raise ValueError(f"Configuration error: Invalid SMS format for 'sms'. Must be a string starting with '+81'.")
 
     # ses_from_emailのフォーマットチェック
     if not re.fullmatch(r".+@.+\..+", config['ses_from_email']):
-        raise ValueError(f"Configuration error: Invalid email format for 'ses_from_email': {config['ses_from_email']}.")
+        #raise ValueError(f"Configuration error: Invalid email format for 'ses_from_email': {config['ses_from_email']}.")
+        raise ValueError(f"Configuration error: Invalid email format for 'ses_from_email'.")
 
     # ebs_sizeの範囲チェック(10G〜1000G)
     if 'ebs_size' in config:
